@@ -2,21 +2,122 @@
 <html lang="uk">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ЛР1 – Мій застосунок</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Лр1-Мій застосунок Варіант-9</title>
+    <link rel="stylesheet" href="styless.css" />
     <script src="app.js" defer></script>
 </head>
-<body>
-<hader>
-    <h1>Мій застосунок (варіант 9)</h1>
-</hader>
 
+<body>
+<header> <h1>Техпідтримка для студентів</h1>  </header>
 <main>
-    <h2>
-        Проекція
-    </h2>
+    <section id="Info-section">
+        <h2> <em>Про університет</em> </h2>
+    </section>
+
+    <section id="news-section">
+        <h2><em>Новини Університету</em></h2>
+    </section>
+
+    <section id="students-section">
+        <h2><em>Студентам</em></h2>
+    </section>
+
 </main>
 
+<table id="Faculty-table">
+    <thead>
+        <tr>
+            <th><em>Ваш Факультет </em></th>
+            <th>ФІТ</th>
+            <th>ФЕЛ</th>
+            <th>ФІОТ</th>
+            <th>ФРЕКС</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+</table>
+
+<form id="createForm">
+    <!-- поля вводу -->
+    <button type="submit">Набрати номер - 098 *** **** </button>
+</form>
+
+<label for="userInput">Користувач</label>
+<input id="userInput" type="text" />
+
+<input id="titleInput" type="text" placeholder="Напр., Заявка на доступ" />
+
+<input id="userInput2" type="text" required minlength="3" maxlength="30" />
+
+<input id="capacityInput" type="number" min="1" max="500" />
+
+
+<label for="statusSelect">Статус</label>
+<select id="statusSelect" required>
+    <option value="">Оберіть статус</option>
+    <option value="New">New</option>
+    <option value="InProgress">InProgress</option>
+    <option value="Done">Done</option>
+</select>
+
+<label for="commentInput">Коментар</label>
+<textarea id="commentInput" rows="4"></textarea>
+
+
+<div class="buttons">
+    <button type="submit">Додати</button>
+    <button type="button" id="resetBtn">Очистити</button>
+</div>
+
+<div class="field">
+    <label for="userInput">Користувач</label>
+    <input id="userInput" type="text" />
+    <p class="error-text" id="userError"></p>
+</div>
+
+
+
+
+<form id="createForm">
+    <div class="field">
+        <label for="field1Input">Поле 1</label>
+        <input id="field1Input" type="text" />
+        <p class="error-text" id="field1Error"></p>
+    </div>
+    <div class="field">
+        <label for="field2Select">Поле 2</label>
+        <select id="field2Select">
+            <option value="">Оберіть значення</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+        </select>
+        <p class="error-text" id="field2Error"></p>
+    </div>
+    <div class="field">
+        <label for="field3Text">Коментар</label>
+        <textarea id="field3Text" rows="4"></textarea>
+        <p class="error-text" id="field3Error"></p>
+    </div>
+    <div class="buttons">
+        <button type="submit">Додати</button>
+        <button type="button" id="resetBtn">Очистити</button>
+    </div>
+</form>
+
+<div class="container">
+    <h1> test </h1>
+</div>
+
+
+
+
+
+
 </body>
+
+
 </html>
