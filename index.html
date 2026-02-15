@@ -24,15 +24,15 @@
 
 
              <form id="createForm">
-                <label for="userimput"> Тема </label>
-                <p><input id="userimput" type="text" required minlength="3" maxlength="50" /></p>
+                <label for="theme"> Тема </label>
+                <p><input id="theme" type="text" required minlength="3" maxlength="50" /></p>
 
 
                 <div class="form-row">
 
                     <div class="field-group">
-                    <label for="statusselect">Статус</label>
-                    <select id="statusselect" required>
+                    <label for="status">Статус</label>
+                    <select id="status" required>
                         <option value=""> Оберіть статус </option>
                         <option value="Blocker"> Критична помилка </option>
                         <option value="Bug"> Помилка </option>
@@ -54,8 +54,8 @@
 
                 <b></b>
 
-                <label for="commentinput">Повідомлення</label>
-                <p><textarea id="commentinput" rows="6"></textarea></p>
+                <label for="comment">Повідомлення</label>
+                <p><textarea id="comment" rows="6"></textarea></p>
 
 
 
@@ -64,7 +64,7 @@
 
 
                 <div class="button">
-                    <button class="addbtn"type="submit" id="addBtn">Додати заявку</button>
+                    <button class="addbtn" type="submit" id="addBtn">Додати заявку</button>
                     <button class="resetbtn" type="button" id="resetBtn">Очистити</button>
                 </div>
              </form>
@@ -76,29 +76,23 @@
     <h1><em>Мої заявки</em></h1>
 
 
-            <table>
+            <table id="datatable" border="1">
                 <thead>
                     <tr>
                         <th>№</th>
                         <th>Тема</th>
                         <th>Статус</th>
                         <th>Пріорітет</th>
+                        <th>Повідомлення</th>
                         <th>Автор</th>
                         <th>Дії</th>
                     </tr>
                 </thead>
-                <tbody id="itemstablebody">
-
-                </tbody>
+                <tbody id="itemstablebody"></tbody>
             </table>
 
     </section>
 </div>
-
-
-
-
-
 
 
 

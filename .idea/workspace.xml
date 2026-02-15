@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="We add some function to html and then add some to css">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styless.css" beforeDir="false" afterPath="$PROJECT_DIR$/styless.css" afterDir="false" />
     </list>
@@ -77,7 +79,10 @@
       <workItem from="1770733400646" duration="10920000" />
       <workItem from="1770815701776" duration="899000" />
       <workItem from="1770816603449" duration="5724000" />
-      <workItem from="1770822733707" duration="14429000" />
+      <workItem from="1770822733707" duration="14782000" />
+      <workItem from="1770901701834" duration="144000" />
+      <workItem from="1770983295549" duration="8148000" />
+      <workItem from="1771161573703" duration="6464000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -103,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770833924771</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="We add some function to html and then add some to css">
+      <option name="closed" value="true" />
+      <created>1770837491229</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770837491229</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +136,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="Do some research before making a project" />
-    <MESSAGE value="We add some function to html and then add some to css" />
-    <option name="LAST_COMMIT_MESSAGE" value="We add some function to html and then add some to css" />
+    <MESSAGE value="make a first step" />
+    <MESSAGE value="make a first step" />
+    <option name="LAST_COMMIT_MESSAGE" value="make a first step" />
   </component>
 </project>
