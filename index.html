@@ -12,20 +12,17 @@
 
 <div class="container">
     <div class="left"><header>Система Техпідтримки Студентів </header></div>
-    <div class="right"><button type ="submit">Увійти в акаунт</button></div>
+    <div class="right"><button type ="submit" class="registrbtn">Увійти в акаунт</button></div>
 </div>
-
-
 
 <div class="mainconteiner">
     <section class="formsection">
-
-            <h1><em>Створити заявку</em></h1>
-
+            <h1>Створити заявку</h1>
 
              <form id="createForm">
                 <label for="theme"> Тема </label>
                 <p><input id="theme" type="text" required minlength="3" maxlength="50" /></p>
+                 <p class="error-text" id="theme-error"> </p>
 
 
                 <div class="form-row">
@@ -39,6 +36,7 @@
                         <option value="Question"> Запитання </option>
                         <option value="offer"> Пропозиція</option>
                     </select>
+                        <p class="error-text" id="status-error"></p>
                     </div>
 
                     <div class="field-group">
@@ -49,18 +47,21 @@
                         <option value="medium">Середній</option>
                         <option value="high">Високий</option>
                     </select>
+                        <p class="error-text" id="priority-error"></p>
                     </div>
                 </div>
 
                 <b></b>
 
                 <label for="comment">Повідомлення</label>
-                <p><textarea id="comment" rows="6"></textarea></p>
+                <p><textarea id="comment" rows="6" minlength="5" required></textarea></p>
+                 <p class="error-text" id="comment-error"></p>
 
 
 
                 <label for="username">ПІБ</label>
-                <p><input id="username" minlength="4" maxlength="70"></p>
+                <p><input id="username" minlength="4" maxlength="70" required></p>
+                 <p class="error-text" id="username-error"></p>
 
 
                 <div class="button">
@@ -73,8 +74,24 @@
     </section>
 
     <section class="listsection">
-    <h1><em>Мої заявки</em></h1>
+    <h1>Мої заявки</h1>
 
+        <label> Фільтри </label>
+
+        <div class="filters">
+            <p><input id="searchInput" type="text" placeholder="Пошук за темою або користувачем" /></p>
+            <select id="filterStatus">
+                <option value="">Сортування за статусом</option>
+                <option value="Blocker">Критична помилка</option>
+                <option value="Bug">Помилка</option>
+                <option value="Question">Питання</option>
+                <option value="offer">Пропозиція</option>
+            </select>
+            <p></p>
+            <button id="sortByDateBtn" class="datesortbtn"> Сортувати за датою </button>
+            <button id="sortByPriorityBtn" class="prioritysortbtn"> Сортувати за пріорітетом </button>
+            <p></p>
+        </div>
 
             <table id="datatable" border="1">
                 <thead>
@@ -94,12 +111,5 @@
     </section>
 </div>
 
-
-
-
-
-
-
 </body>
 </html>
-
