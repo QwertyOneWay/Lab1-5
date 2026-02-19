@@ -21,7 +21,7 @@
 
              <form id="createForm">
                 <label for="theme"> Тема </label>
-                <p><input id="theme" type="text" required minlength="3" maxlength="50" /></p>
+                <p><input id="theme" type="text"  minlength="3" maxlength="50" /></p>
                  <p class="error-text" id="theme-error"> </p>
 
 
@@ -29,7 +29,7 @@
 
                     <div class="field-group">
                     <label for="status">Статус</label>
-                    <select id="status" required>
+                    <select id="status">
                         <option value=""> Оберіть статус </option>
                         <option value="Blocker"> Критична помилка </option>
                         <option value="Bug"> Помилка </option>
@@ -41,7 +41,7 @@
 
                     <div class="field-group">
                     <label for="priority">Пріоритет</label>
-                    <select id="priority" required>
+                    <select id="priority">
                         <option value="">Оберіть пріоритет</option>
                         <option value="low">Низький</option>
                         <option value="medium">Середній</option>
@@ -54,13 +54,13 @@
                 <b></b>
 
                 <label for="comment">Повідомлення</label>
-                <p><textarea id="comment" rows="6" minlength="5" required></textarea></p>
+                <p><textarea id="comment" rows="6" minlength="5"></textarea></p>
                  <p class="error-text" id="comment-error"></p>
 
 
 
                 <label for="username">ПІБ</label>
-                <p><input id="username" minlength="4" maxlength="70" required></p>
+                <p><input id="username" minlength="4" maxlength="70"></p>
                  <p class="error-text" id="username-error"></p>
 
 

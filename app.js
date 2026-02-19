@@ -1,16 +1,102 @@
-const theme1 = document.getElementById('theme');
-const status1 = document.getElementById('status');
-const priority1 = document.getElementById('priority');
-const comment1 = document.getElementById('comment');
-const username1 = document.getElementById('username');
 const createForm = document.getElementById('createForm');
 const resetBtn = document.getElementById('resetBtn');
 const tbody = document.getElementById('itemstablebody');
+
+// const searchInput = document.getElementById('searchInput');
+// const filterStatus = document.getElementById('filterStatus');
 
 let items = JSON.parse(localStorage.getItem("items")) || [];
 let editingId = null;
 function saveToLocalStorage() {
     localStorage.setItem("items", JSON.stringify(items));
+}
+
+
+function clearError(inputId, errorId) {
+    document.getElementById(inputId).classList.remove("invalid");
+    document.getElementById(errorId).innerHTML = "";
+}
+function clearErrors() {
+    clearError("theme", "theme-error");
+    clearError("status", "status-error");
+    clearError("priority", "priority-error");
+    clearError("comment", "comment-error");
+    clearError("username", "username-error");
+}
+
+function showError(inputId, errorId, message) {
+    document.getElementById(inputId).classList.add('invalid');
+    document.getElementById(errorId).innerHTML = message;
+}
+
+
+function Validate(dto) {
+    clearErrors()
+
+    let isValid = true;
+    const theme = dto.theme.trim();
+    if (theme ==="") {
+        showError("theme", "theme-error", "Тема має бути не менше 3 символів");
+        isValid = false;
+    }
+
+
+    const stat = dto.status.trim();
+    if (stat === "") {
+        showError("status", "status-error", "Оберіть статус зі списку");
+        isValid = false;
+    }
+
+
+    const priority = dto.priority.trim();
+    if (priority === "") {
+        showError("priority", "priority-error", "Оберіть пріоритет");
+        isValid = false;
+    }
+
+
+    const commentary = dto.comment.trim();
+    if (commentary ==="") {
+        showError("comment", "comment-error", "Напишіть детальніше (мін. 8 симв.)");
+        isValid = false;
+    }
+
+
+    const username = dto.username.trim();
+    if (username ==="") {
+        showError("username", "username-error", "Введіть повне ПІБ");
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+function readForm(){
+    return{
+        id: Date.now().toString(),
+        theme: document.getElementById("theme").value,
+        status: document.getElementById("status").value,
+        priority: document.getElementById("priority").value,
+        comment: document.getElementById("comment").value,
+        username: document.getElementById("username").value,
+        createdAt: new Date().toISOString(),
+    };
+}
+
+function fillForm(dto){
+    document.getElementById("theme").value = dto.theme;
+    document.getElementById("priority").value = dto.priority;
+    document.getElementById("comment").value = dto.comment;
+    document.getElementById("username").value = dto.username;
+    document.getElementById("status").value = dto.status;
+}
+
+function clearForm(){
+    document.getElementById("theme").value = "";
+    document.getElementById("status").value = "";
+    document.getElementById("priority").value = "";
+    document.getElementById("comment").value = "";
+    document.getElementById("username").value = "";
 }
 
 function rendertable(items) {
@@ -30,52 +116,31 @@ function rendertable(items) {
             </td>
         </tr>
         `).join('');
-        tbody.innerHTML = rowsHtml;
+    tbody.innerHTML = rowsHtml;
 }
-
 
 createForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const theme = theme1.value.trim();
-    const status = status1.value;
-    const priority = priority1.value;
-    const comment = comment1.value.trim();
-    const username = username1.value.trim();
-
-    if (!theme || !status || !priority || !comment || !username) {
-        alert('Будь ласка, заповніть усі поля');
+    const dto = readForm();
+    const result = Validate(dto);
+    if (result === false) {
         return;
     }
 
     if (editingId) {
         const index = items.findIndex(item => item.id === editingId);
         if (index !== -1) {
-            items[index] = {
-                ...items[index],
-                theme,
-                status,
-                priority,
-                comment,
-                username,
-            };
+            dto.id = items[index].id;
+            dto.createdAt = items[index].createdAt;
+            items[index] = dto;
         }
         editingId = null;
         createForm.reset();
         document.getElementById('addBtn').textContent = "Додати заявку";
     } else {
-        const newItem = {
-            id: Date.now().toString(),
-            theme,
-            status,
-            priority,
-            comment,
-            username,
-            createdAt: new Date().toISOString(),
-        };
-        items.push(newItem);
+        items.push(dto);
     }
-
     saveToLocalStorage();
     rendertable(items);
     createForm.reset();
@@ -87,12 +152,8 @@ tbody.addEventListener('click', (e) => {
     if (e.target.classList.contains('edit-btn')) {
         const id = e.target.getAttribute('data-id');
         const item = items.find(item => item.id === id);
-        if (item) {
-            theme1.value = item.theme;
-            status1.value = item.status;
-            priority1.value = item.priority;
-            comment1.value = item.comment;
-            username1.value = item.username;
+        if (item !== -1) {
+            fillForm(item);
             editingId = id;
             document.getElementById('addBtn').textContent ='Зберегти';
         }
@@ -147,96 +208,3 @@ resetBtn.addEventListener('click', (e) => {
 })
 
 rendertable(items);
-
-
-
-
-
-
-
-
-
-
-
-
-// function clearError(inputId, errorId) {
-//     document.getElementById(inputId).classList.remove("invalid");
-//     document.getElementById(errorId).innerHTML = "";
-// }
-// function clearErrors() {
-//     clearError("theme", "theme-error");
-//     clearError("status", "status-error");
-//     clearError("priority", "priority-error");
-//     clearError("comment", "comment-error");
-//     clearError("username", "username-error");
-// }
-//
-// function showError(inputId, errorId, message) {
-//     document.getElementById(inputId).classList.add('invalid');
-//     document.getElementById(errorId).innerHTML = message;
-// }
-//
-//
-// function Validate(dto) {
-//     clearError()
-//
-//     let isValid = true;
-//     const theme = dto.theme.trim();
-//     if (theme ==="") {
-//         showError("theme", "theme-error", "Тема має бути не менше 3 символів");
-//         isValid = false;
-//     }
-//
-//
-//     const stat = dto.status.trim();
-//     if (stat === "") {
-//         showError("status", "status-error", "Оберіть статус зі списку");
-//         isValid = false;
-//     }
-//
-//
-//     const priority = dto.priority.trim();
-//     if (priority === "") {
-//         showError("priority", "priority-error", "Оберіть пріоритет");
-//         isValid = false;
-//     }
-//
-//
-//     const commentary = dto.comment.trim();
-//     if (commentary ==="") {
-//         showError("comment", "comment-error", "Напишіть детальніше (мін. 8 симв.)");
-//         isValid = false;
-//     }
-//
-//
-//     const username = dto.username.trim();
-//     if (username ==="") {
-//         showError("username", "username-error", "Введіть повне ПІБ");
-//         isValid = false;
-//     }
-//
-//     return isValid;
-// }
-//
-// function readForm(){
-//     return{
-//         id: Date.now().toString(),
-//         theme: document.getElementById("theme").value,
-//         status: document.getElementById("status").value,
-//         priority: document.getElementById("priority").value,
-//         comment: document.getElementById("comment").value,
-//         username: document.getElementById("username").value,
-//
-//     };
-// }
-//
-// function clearForm(){
-//     document.getElementById("theme").value = "";
-//     document.getElementById("status").value = "";
-//     document.getElementById("priority").value = "";
-//     document.getElementById("comment").value = "";
-//     document.getElementById("username").value = "";
-// }
-//
-
-

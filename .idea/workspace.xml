@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="">
+    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="do all the task we needed such as: filters/ sort/ edit/ delete/ search/ local Storage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styless.css" beforeDir="false" afterPath="$PROJECT_DIR$/styless.css" afterDir="false" />
+    </list>
+    <list id="224ae99a-6c82-4d77-8e49-dce678d051d5" name="Changes by Admin" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +33,22 @@
     &quot;accountId&quot;: &quot;7034231c-a5bf-4917-bf01-5f3f127a1369&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/app.js">
+      <ranges>
+        <range start1="0" end1="5" start2="0" end2="0" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="8" end1="8" start2="3" end2="6" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="14" end1="14" start2="12" end2="100" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="34" end1="35" start2="120" end2="120" changelist="224ae99a-6c82-4d77-8e49-dce678d051d5" />
+        <range start1="39" end1="47" start2="124" end2="127" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="53" end1="61" start2="133" end2="136" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="66" end1="76" start2="141" end2="142" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="77" end1="78" start2="143" end2="143" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="89" end1="95" start2="154" end2="156" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+        <range start1="149" end1="242" start2="210" end2="210" changelist="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -41,27 +60,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -84,7 +104,9 @@
       <workItem from="1770983295549" duration="8148000" />
       <workItem from="1771161573703" duration="6810000" />
       <workItem from="1771340193901" duration="15249000" />
-      <workItem from="1771407705686" duration="10705000" />
+      <workItem from="1771407705686" duration="10912000" />
+      <workItem from="1771422168900" duration="912000" />
+      <workItem from="1771497338518" duration="9688000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -134,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771169446770</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="do all the task we needed such as: filters/ sort/ edit/ delete/ search/ local Storage">
+      <option name="closed" value="true" />
+      <created>1771418798449</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1771418798449</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +190,7 @@
     <MESSAGE value="java// made some first steps" />
     <MESSAGE value="delete some stuff in java" />
     <MESSAGE value="delete some stuff in java" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete some stuff in java" />
+    <MESSAGE value="do all the task we needed such as: filters/ sort/ edit/ delete/ search/ local Storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="do all the task we needed such as: filters/ sort/ edit/ delete/ search/ local Storage" />
   </component>
 </project>
