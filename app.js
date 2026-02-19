@@ -2,20 +2,17 @@ const createForm = document.getElementById('createForm');
 const resetBtn = document.getElementById('resetBtn');
 const tbody = document.getElementById('itemstablebody');
 
-// const searchInput = document.getElementById('searchInput');
-// const filterStatus = document.getElementById('filterStatus');
-
 let items = JSON.parse(localStorage.getItem("items")) || [];
 let editingId = null;
 function saveToLocalStorage() {
     localStorage.setItem("items", JSON.stringify(items));
 }
 
-
 function clearError(inputId, errorId) {
     document.getElementById(inputId).classList.remove("invalid");
     document.getElementById(errorId).innerHTML = "";
 }
+
 function clearErrors() {
     clearError("theme", "theme-error");
     clearError("status", "status-error");
@@ -29,21 +26,26 @@ function showError(inputId, errorId, message) {
     document.getElementById(errorId).innerHTML = message;
 }
 
-
 function Validate(dto) {
     clearErrors()
 
     let isValid = true;
     const theme = dto.theme.trim();
     if (theme ==="") {
-        showError("theme", "theme-error", "Тема має бути не менше 3 символів");
+        showError("theme", "theme-error", "Обов'язкове поле");
+        isValid = false;
+    } if (theme.length < 4){
+        showError("theme", "theme-error", "Тема має бути не менше 4 символів" );
+        isValid = false;
+    } else if (theme.length > 50){
+        showError("theme", "theme-error", "Тема має бути не більше 50 символів" );
         isValid = false;
     }
 
 
     const stat = dto.status.trim();
     if (stat === "") {
-        showError("status", "status-error", "Оберіть статус зі списку");
+        showError("status", "status-error", "Оберіть статус");
         isValid = false;
     }
 
@@ -57,17 +59,28 @@ function Validate(dto) {
 
     const commentary = dto.comment.trim();
     if (commentary ==="") {
+        showError("comment", "comment-error", "Обов'язкове поле");
+        isValid = false;
+    } else if (commentary.length < 8) {
         showError("comment", "comment-error", "Напишіть детальніше (мін. 8 симв.)");
+        isValid = false;
+    } else if (commentary.length > 1500) {
+        showError("comment", "comment-error", "Занадто багато символів!");
         isValid = false;
     }
 
 
     const username = dto.username.trim();
     if (username ==="") {
-        showError("username", "username-error", "Введіть повне ПІБ");
+        showError("username", "username-error", "Обов'язкове поле");
+        isValid = false;
+    } else if (username.length < 5) {
+        showError("username", "username-error", "Мінімум 5 символів");
+        isValid = false;
+    } else if (username.length > 65) {
+        showError("username", "username-error", "Занадто багато символів");
         isValid = false;
     }
-
     return isValid;
 }
 
@@ -144,8 +157,8 @@ createForm.addEventListener('submit', (e) => {
     saveToLocalStorage();
     rendertable(items);
     createForm.reset();
+    clearForm();
 });
-
 
 tbody.addEventListener('click', (e) => {
 
@@ -174,8 +187,7 @@ tbody.addEventListener('click', (e) => {
     }
 });
 
-
-document.getElementById('filterStatus').addEventListener('change', (e) => {
+document.getElementById('searchInput').addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const filteredItems = items.filter(item =>
         item.theme.toLowerCase().includes(query) || item.username.toLowerCase().includes(query)
@@ -201,7 +213,6 @@ document.getElementById('sortByPriorityBtn').addEventListener('click', () => {
     saveToLocalStorage();
     rendertable(items);
 });
-
 
 resetBtn.addEventListener('click', (e) => {
     createForm.reset();

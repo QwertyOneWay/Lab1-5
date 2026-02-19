@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-    <div class="left"><header>Система Техпідтримки Студентів </header></div>
+    <div class="left"><header><strong> Система Техпідтримки Студентів</strong>  </header></div>
     <div class="right"><button type ="submit" class="registrbtn">Увійти в акаунт</button></div>
 </div>
 
@@ -21,9 +21,9 @@
 
              <form id="createForm">
                 <label for="theme"> Тема </label>
-                <p><input id="theme" type="text"  minlength="3" maxlength="50" /></p>
+                <input id="theme" type="text" />
                  <p class="error-text" id="theme-error"> </p>
-
+                 <p></p>
 
                 <div class="form-row">
 
@@ -54,15 +54,16 @@
                 <b></b>
 
                 <label for="comment">Повідомлення</label>
-                <p><textarea id="comment" rows="6" minlength="5"></textarea></p>
+                <textarea id="comment" rows="6"></textarea>
                  <p class="error-text" id="comment-error"></p>
 
-
+                <p></p>
 
                 <label for="username">ПІБ</label>
-                <p><input id="username" minlength="4" maxlength="70"></p>
+                <input id="username">
                  <p class="error-text" id="username-error"></p>
 
+                <p></p>
 
                 <div class="button">
                     <button class="addbtn" type="submit" id="addBtn">Додати заявку</button>
