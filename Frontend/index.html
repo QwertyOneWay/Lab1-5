@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Мій застосунок Варіант-9</title>
+    <link rel="stylesheet" href="styless.css" />
+    <script src="state.js" defer></script>
+    <script src="ui.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left"><header><strong> Система Техпідтримки Студентів</strong>  </header></div>
+    <div class="right"><button type ="submit" class="registrbtn">Увійти в акаунт</button></div>
+</div>
+
+<div class="mainconteiner">
+    <section class="formsection">
+            <h1>Створити заявку</h1>
+
+             <form id="createForm">
+                <label for="theme"> Тема </label>
+                <input id="theme" type="text" />
+                 <p class="error-text" id="theme-error"> </p>
+                 <p></p>
+
+                <div class="form-row">
+
+                    <div class="field-group">
+                    <label for="status">Статус</label>
+                    <select id="status">
+                        <option value=""> Оберіть статус </option>
+                        <option value="Blocker"> Критична помилка </option>
+                        <option value="Bug"> Помилка </option>
+                        <option value="Question"> Запитання </option>
+                        <option value="offer"> Пропозиція</option>
+                    </select>
+                        <p class="error-text" id="status-error"></p>
+                    </div>
+
+                    <div class="field-group">
+                    <label for="priority">Пріоритет</label>
+                    <select id="priority">
+                        <option value="">Оберіть пріоритет</option>
+                        <option value="low">Низький</option>
+                        <option value="medium">Середній</option>
+                        <option value="high">Високий</option>
+                    </select>
+                        <p class="error-text" id="priority-error"></p>
+                    </div>
+                </div>
+
+                <b></b>
+
+                <label for="comment">Повідомлення</label>
+                <textarea id="comment" rows="6"></textarea>
+                 <p class="error-text" id="comment-error"></p>
+
+                <p></p>
+
+                <label for="username">ПІБ</label>
+                <input id="username">
+                 <p class="error-text" id="username-error"></p>
+
+                <p></p>
+
+                <div class="button">
+                    <button class="addbtn" type="submit" id="addBtn">Додати заявку</button>
+                    <button class="resetbtn" type="button" id="resetBtn">Очистити</button>
+                </div>
+             </form>
+
+
+    </section>
+
+    <section class="listsection">
+    <h1>Мої заявки</h1>
+
+        <label> Фільтри </label>
+
+        <div class="filters">
+            <p><label for="searchInput"></label><input id="searchInput" type="text" placeholder="Пошук за темою або користувачем" /></p>
+            <select id="filterStatus">
+                <option value="">Сортування за статусом</option>
+                <option value="Blocker">Критична помилка</option>
+                <option value="Bug">Помилка</option>
+                <option value="Question">Питання</option>
+                <option value="offer">Пропозиція</option>
+            </select>
+            <p></p>
+            <button id="sortByDateBtn" class="datesortbtn"> Сортувати за датою </button>
+            <button id="sortByPriorityBtn" class="prioritysortbtn"> Сортувати за пріорітетом </button>
+            <p></p>
+        </div>
+
+            <table id="datatable" border="1">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Тема</th>
+                        <th>Статус</th>
+                        <th>Пріорітет</th>
+                        <th>Повідомлення</th>
+                        <th>Автор</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="itemstablebody"></tbody>
+            </table>
+
+    </section>
+</div>
+
+</body>
+</html>
