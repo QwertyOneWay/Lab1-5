@@ -1,16 +1,28 @@
-.left {
-    float: left;
+header {
+    font-family: sans-serif, Arial;
+    font-size: 35px;
+    border : 1px solid rgba(232, 117, 16, 0.82);
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.77);
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    color : #000000;
 }
-.right {
-    float: right;
-}
-
 body {
     background: rgba(255, 255, 255, 0.82);
     font-family: sans-serif, arial;
     font-size: 23px;
 }
 
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
 
 .button {
     margin-top : 12px;
@@ -23,14 +35,12 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-
 .delete-btn {
     background: rgba(253, 0, 0, 0.82);
     color: #fff;
     border: solid 1px #ffffff;
     border-radius: 8px;
 }
-
 .addbtn {
     background-color: rgba(234, 124, 27, 0.82);
     border: gold;
@@ -43,7 +53,6 @@ button {
     color: white;
     border-radius: 8px;
 }
-
 .registrbtn {
     background-color: #ffffff;
     color: rgb(0, 60, 255);
@@ -61,7 +70,6 @@ button {
     cursor: pointer;
     padding: 14px;
 }
-
 .datesortbtn {
     background-color: rgba(234, 124, 27, 0.82);
     border: 1px solid rgb(0, 0, 0);
@@ -70,7 +78,6 @@ button {
     color: white;
     font-size: 18px;
 }
-
 .prioritysortbtn {
     border: 1px solid rgb(0, 0, 0);
     background-color: rgba(234, 124, 27, 0.82);
@@ -80,27 +87,11 @@ button {
     font-size: 18px;
 }
 
-
-header {
-    font-family: sans-serif, Arial;
-    font-size: 35px;
-    border : 1px solid rgba(232, 117, 16, 0.82);
-    border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.77);
-    width: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 7px;
-    color : #000000;
-}
-
 a {
     display: block;
     padding: 35px ;
     text-align : center ;
 }
-
 b {
     display: block;
     padding: 15px ;
@@ -112,13 +103,11 @@ b {
     gap: 20px;
     align-items: flex-end;
 }
-
 .field-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-
 
 h1 {
     display: flex;
@@ -133,7 +122,6 @@ h1 {
     width: 100%;
     box-sizing: border-box;
 }
-
 .listsection, .formsection {
     flex: 1;
     padding: 20px;
@@ -152,7 +140,6 @@ td, th {
     text-align: center;
     justify-content: center;
 }
-
 th {
     background-color: rgba(234, 124, 27, 0.82);
     color: white;
@@ -180,14 +167,12 @@ textarea {
     border: 1px solid red;
 
 }
-
 .error-text {
     margin: 4px 0 0;
     font-size: 14px;
     color: #c00;
     min-height: 6px;
 }
-
 
 .scroll-wrapper {
     max-height: 100px;
@@ -198,4 +183,3 @@ textarea {
     text-align: center;
     justify-content: center;
 }
-
