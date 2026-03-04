@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="create new directories">
+    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="bckend 1step">
+      <change afterPath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +66,7 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "D:\\1Project\\Backend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -93,7 +99,7 @@
       <workItem from="1771587603002" duration="3529000" />
       <workItem from="1772539877627" duration="774000" />
       <workItem from="1772640821209" duration="2688000" />
-      <workItem from="1772643577864" duration="2272000" />
+      <workItem from="1772643577864" duration="10223000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -191,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772644313098</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="bckend 1step">
+      <option name="closed" value="true" />
+      <created>1772646180690</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1772646180690</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +236,7 @@
     <MESSAGE value="0.1.0" />
     <MESSAGE value="add files state.js and ui.js" />
     <MESSAGE value="create new directories" />
-    <option name="LAST_COMMIT_MESSAGE" value="create new directories" />
+    <MESSAGE value="bckend 1step" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
