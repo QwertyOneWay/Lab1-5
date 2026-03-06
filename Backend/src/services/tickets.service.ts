@@ -1,27 +1,52 @@
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import * as ticketsRepository from '../repositories/tickets.repository';
 
-export interface CreateTicketDto {
-    theme : string;
-    status : string;
-    priority : string;
-    comment : string;
-    username : string;
+export interface CreateTicketRequestDto {
+    theme: string;
+    status: string;
+    priority: string;
+    comment: string;
+    username: string;
 }
 
-export const getAllTickets = () => {
-    return ticketsRepository.getAllTickets();
+export type UpdateTicketRequestDto = Partial<CreateTicketRequestDto>;
+
+export interface TicketResponseDto {
+    id: string;
+    theme: string;
+    status: string;
+    priority: string;
+    comment: string;
+    username: string;
+    createdAt: string;
 }
 
-export const getTicketById = (id: string) => {
-    const ticket = ticketsRepository.getTicketById(id);
-    if (!ticket){
-        throw new Error(`NOT FOUND`);
-    }
-    return ticket;
+const mapToResponseDto = (ticket: ticketsRepository.Ticket): TicketResponseDto => {
+    return {
+        id: ticket.id,
+        theme: ticket.theme,
+        status: ticket.status,
+        priority: ticket.priority,
+        comment: ticket.comment,
+        username: ticket.username,
+        createdAt: ticket.createdAt
+    };
 };
 
-export const createTicket = (dto: CreateTicketDto) => {
+
+export const getAllTickets = (): TicketResponseDto[] => {
+    return ticketsRepository.getAllTickets().map(mapToResponseDto);
+};
+
+export const getTicketById = (id: string): TicketResponseDto => {
+    const ticket = ticketsRepository.getTicketById(id);
+    if (!ticket) {
+        throw new Error("NOT_FOUND");
+    }
+    return mapToResponseDto(ticket);
+};
+
+export const createTicket = (dto: CreateTicketRequestDto): TicketResponseDto => {
     if (!dto.theme || dto.theme.trim().length < 4) {
         throw new Error("VALIDATION_ERROR: Тема має бути не менше 4 символів");
     }
@@ -29,7 +54,7 @@ export const createTicket = (dto: CreateTicketDto) => {
         throw new Error("VALIDATION_ERROR: Оберіть статус");
     }
     if (!dto.priority || dto.priority.trim() === "") {
-        throw new Error('VALIDATION_ERROR: Оберіть пріоритет')
+        throw new Error("VALIDATION_ERROR: Оберіть пріоритет");
     }
     if (!dto.comment || dto.comment.trim().length < 8) {
         throw new Error("VALIDATION_ERROR: Коментар має бути мінімум 8 символів");
@@ -50,20 +75,12 @@ export const createTicket = (dto: CreateTicketDto) => {
         username: dto.username,
         createdAt: new Date().toISOString()
     };
-    return ticketsRepository.addTicket(newTicket);
+
+    const savedTicket = ticketsRepository.addTicket(newTicket);
+    return mapToResponseDto(savedTicket);
 };
 
-export const deleteTicket = (id: string) => {
-    const isDeleted = ticketsRepository.deleteTicket(id);
-    if (!isDeleted) {
-        throw new Error(`NOT FOUND`);
-    }
-    return true;
-};
-
-
-export const updateTicket = (id: string, dto: Partial<CreateTicketDto>) => {
-
+export const updateTicket = (id: string, dto: UpdateTicketRequestDto): TicketResponseDto => {
     if (typeof dto.theme === 'string' && dto.theme.trim().length < 4) {
         throw new Error("VALIDATION_ERROR: Тема має бути не менше 4 символів");
     }
@@ -73,11 +90,20 @@ export const updateTicket = (id: string, dto: Partial<CreateTicketDto>) => {
     if (typeof dto.comment === 'string' && dto.comment.trim().length > 1500) {
         throw new Error("VALIDATION_ERROR: Коментар занадто довгий");
     }
+
     const updatedTicket = ticketsRepository.updateTicket(id, dto);
 
     if (!updatedTicket) {
         throw new Error("NOT_FOUND");
     }
 
-    return updatedTicket;
+    return mapToResponseDto(updatedTicket); // Пакуємо оновлену заявку
+};
+
+export const deleteTicket = (id: string): boolean => {
+    const isDeleted = ticketsRepository.deleteTicket(id);
+    if (!isDeleted) {
+        throw new Error("NOT_FOUND");
+    }
+    return true;
 };

@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="styless.css" />
     <script src="state.js" defer></script>
     <script src="ui.js" defer></script>
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js" defer></script>
 </head>
 
 <body>
 
 <div class="container">
     <div class="left"><header><strong> Система Техпідтримки Студентів</strong>  </header></div>
-    <div class="right"><button type ="submit" class="registrbtn">Увійти в акаунт</button></div>
+    <div class="right"><button type ="button" class="registrbtn">Увійти в акаунт</button></div>
 </div>
+
 
 <div class="mainconteiner">
     <section class="formsection">
@@ -112,6 +113,40 @@
             </table>
 
     </section>
+</div>
+
+<div id="regModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeRegModal">&times;</span>
+        <h2>Реєстрація студента</h2>
+        <form id="regForm">
+            <div class="field-group">
+                <label>ПІБ:</label>
+                <input type="text" id="regFullName"/>
+            </div>
+            <p></p>
+            <div class="field-group">
+                <label>Email:</label>
+                <input type="email" id="regEmail">
+            </div>
+            <p></p>
+            <div class="field-group">
+                <label for="regCourse">Курс</label>
+                <select id="regCourse">
+                    <option value="">Оберіть Ваш курс</option>
+                    <option value="1">1-й</option>
+                    <option value="2">2-й</option>
+                    <option value="3">3-й</option>
+                    <option value="4">4-й</option>
+                    <option value="5">5-й</option>
+                    <option value="6">6-й</option>
+                </select>
+
+            </div>
+            <p></p>
+            <button type="submit" class="regbtn">Зареєструватися</button>
+        </form>
+    </div>
 </div>
 
 </body>

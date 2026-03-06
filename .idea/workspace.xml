@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="bckend 1step">
-      <change afterPath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" afterDir="false" />
+    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="added Controllers, Services, Repositories, Routes index.ts">
+      <change afterPath="$PROJECT_DIR$/Backend/src/controllers/users.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/routes/users.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/services/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/styless.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/styless.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,30 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.index.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "D:\\1Project\\Backend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\1Project\\Backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -99,7 +104,8 @@
       <workItem from="1771587603002" duration="3529000" />
       <workItem from="1772539877627" duration="774000" />
       <workItem from="1772640821209" duration="2688000" />
-      <workItem from="1772643577864" duration="10223000" />
+      <workItem from="1772643577864" duration="10330000" />
+      <workItem from="1772800044659" duration="13852000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -205,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772646180690</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added Controllers, Services, Repositories, Routes index.ts">
+      <option name="closed" value="true" />
+      <created>1772654075769</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1772654075769</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +251,7 @@
     <MESSAGE value="add files state.js and ui.js" />
     <MESSAGE value="create new directories" />
     <MESSAGE value="bckend 1step" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="added Controllers, Services, Repositories, Routes index.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Controllers, Services, Repositories, Routes index.ts" />
   </component>
 </project>
