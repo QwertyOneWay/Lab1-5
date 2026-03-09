@@ -1,10 +1,12 @@
 import express from "express";
+import cors from "cors";
 import ticketsRoutes from "./routes/tickets.routes";
 import usersRoutes from "./routes/users.routes";
 
 const app = express();
 const port = 6060;
 
+app.use(cors());
 app.use(express.json());
 app.use('/api/tickets', ticketsRoutes);
 

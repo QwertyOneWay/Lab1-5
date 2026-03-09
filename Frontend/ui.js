@@ -1,6 +1,13 @@
+/** @type {HTMLFormElement} */
 const createForm = document.getElementById('createForm');
+/** @type {HTMLButtonElement} */
 const resetBtn = document.getElementById('resetBtn');
+/** @type {HTMLTableSectionElement} */
 const tbody = document.getElementById('itemstablebody');
+const regModal = document.getElementById('regModal');
+const loginBtn = document.querySelector('.registrbtn');
+/** @type {HTMLInputElement} */
+const formUsernameInput = document.getElementById('username');
 
 function clearError(inputId, errorId) {
     document.getElementById(inputId).classList.remove("invalid");
@@ -20,7 +27,7 @@ function showError(inputId, errorId, message) {
     document.getElementById(errorId).innerHTML = message;
 }
 
-function fillForm(dto){
+function fillForm(dto) {
     document.getElementById("theme").value = dto.theme;
     document.getElementById("priority").value = dto.priority;
     document.getElementById("comment").value = dto.comment;
@@ -28,22 +35,20 @@ function fillForm(dto){
     document.getElementById("status").value = dto.status;
 }
 
-function clearForm(){
-    document.getElementById("theme").value = "";
-    document.getElementById("status").value = "";
-    document.getElementById("priority").value = "";
-    document.getElementById("comment").value = "";
-    document.getElementById("username").value = "";
+function clearForm() {
+    if (createForm) createForm.reset();
+    clearErrors();
 }
 
-function rendertable(items) {
-    const rowsHtml = items.map((item, index) => `
+function rendertable(dataItems) {
+    if (!tbody) return;
+    const rowsHtml = dataItems.map((item, index) => `
         <tr>
             <td>${index + 1}</td>
             <td>${item.theme}</td>
             <td>${item.status}</td>
             <td>${item.priority}</td>
-            <td><div class ="scroll-wrapper"> ${item.comment}</div></td>
+            <td><div class ="scroll-wrapper">${item.comment}</div></td>
             <td>${item.username}</td>
             <td>
                 <div class="table-buttons-style">
@@ -54,4 +59,29 @@ function rendertable(items) {
         </tr>
         `).join('');
     tbody.innerHTML = rowsHtml;
+}
+
+function showRegModal() {
+    if (regModal) regModal.style.display = "block";
+}
+
+function hideRegModal() {
+    if (regModal) regModal.style.display = "none";
+}
+
+function updateAuthUI(user) {
+    if (!loginBtn) return; // Захист від падіння!
+    if (user) {
+        loginBtn.textContent = `Привіт, ${user.userFullName}`;
+        if (formUsernameInput) {
+            formUsernameInput.value = user.userFullName;
+            formUsernameInput.readOnly = true;
+        }
+    } else {
+        loginBtn.textContent = 'Увійти в акаунт';
+        if (formUsernameInput) {
+            formUsernameInput.value = "";
+            formUsernameInput.readOnly = false;
+        }
+    }
 }

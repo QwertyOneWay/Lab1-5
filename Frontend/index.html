@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styless.css" />
     <script src="state.js" defer></script>
     <script src="ui.js" defer></script>
-    <script type="module" src="app.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 
 <body>
@@ -120,16 +120,22 @@
         <span class="close-btn" id="closeRegModal">&times;</span>
         <h2>Реєстрація студента</h2>
         <form id="regForm">
+            <p class="error-text" id="regServer-error" style="text-align: center; font-size: 16px; margin-bottom: 10px;"></p>
+
             <div class="field-group">
                 <label>ПІБ:</label>
                 <input type="text" id="regFullName"/>
+                <p class="error-text" id="regFullName-error"></p>
             </div>
             <p></p>
+
             <div class="field-group">
                 <label>Email:</label>
                 <input type="email" id="regEmail">
+                <p class="error-text" id="regEmail-error"></p>
             </div>
             <p></p>
+
             <div class="field-group">
                 <label for="regCourse">Курс</label>
                 <select id="regCourse">
@@ -141,7 +147,7 @@
                     <option value="5">5-й</option>
                     <option value="6">6-й</option>
                 </select>
-
+                <p class="error-text" id="regCourse-error"></p>
             </div>
             <p></p>
             <button type="submit" class="regbtn">Зареєструватися</button>
