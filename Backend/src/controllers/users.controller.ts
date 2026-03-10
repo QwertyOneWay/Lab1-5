@@ -1,51 +1,40 @@
-import {Request, Response} from "express";
+import { Request, Response, NextFunction } from "express";
 import * as usersService from '../services/users.service'
 
-export const getAllUsers = (req: Request, res: Response) => {
-    const users = usersService.getAllUsers();
-    res.status(200).json(users);
+export const getAllUsers = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const users = usersService.getAllUsers();
+        res.status(200).json(users);
+    } catch (error) { next(error); }
 };
 
-export const createUser = (req: Request, res: Response) => {
+export const getUserById = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const id = req.params.id as string;
+        const user = usersService.getUserById(id);
+        res.status(200).json(user);
+    } catch (error) { next(error); }
+};
+
+export const createUser = (req: Request, res: Response, next: NextFunction) => {
     try {
         const newUser = usersService.createUser(req.body);
         res.status(201).json(newUser);
-    } catch (error: any) {
-        if (error.name === 'VALIDATION_ERROR') {
-            res.status(400).json({error: error.message});
-        } else {
-            res.status(500).json({error: "Internal Server Error"});
-        }
-    }
+    } catch (error) { next(error); }
 };
 
-
-export const updateUser = (req: Request, res: Response) => {
-    try{
+export const updateUser = (req: Request, res: Response, next: NextFunction) => {
+    try {
         const id = req.params.id as string;
-        const updatedUser  = usersService.updateUser(id, req.body);
+        const updatedUser = usersService.updateUser(id, req.body);
         res.status(200).json(updatedUser);
-    } catch (error: any) {
-        if (error.name === 'NOT_FOUND') {
-            res.status(404).json({error: "Not Found"});
-        } else if (error.name === 'VALIDATION_ERROR') {
-            res.status(400).json({error: error.message});
-        } else {
-            res.status(500).json({error: "Internal Server Error"});
-        }
-    }
+    } catch (error) { next(error); }
 };
 
-export const deleteUser = (req: Request, res: Response) => {
+export const deleteUser = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = req.params.id as string;
         usersService.deleteUser(id);
         res.status(204).send();
-    } catch (error: any) {
-        if (error.name === 'NOT_FOUND') {
-            res.status(404).json({error: "Not Found"});
-        } else {
-            res.status(500).json({error: "Internal Server Error"});
-        }
-    }
+    } catch (error) { next(error); }
 };

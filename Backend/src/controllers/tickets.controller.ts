@@ -1,54 +1,40 @@
-import {Request, Response} from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as ticketsService from '../services/tickets.service';
 
-export const getAllTickets = (req: Request, res: Response) => {
-    const tickets = ticketsService.getAllTickets();
-    res.status(200).json(tickets);
+export const getAllTickets = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const tickets = ticketsService.getAllTickets();
+        res.status(200).json(tickets);
+    } catch (error) { next(error); }
 }
 
-export const createTicket = (req: Request, res: Response) => {
+export const getTicketById = (req: Request, res: Response, next: NextFunction) => {
     try {
-        const dto = req.body;
-        const newTicket = ticketsService.createTicket(dto);
+        const id = req.params.id as string;
+        const ticket = ticketsService.getTicketById(id);
+        res.status(200).json(ticket);
+    } catch (error) { next(error); }
+};
+
+export const createTicket = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const newTicket = ticketsService.createTicket(req.body);
         res.status(201).json(newTicket);
-    } catch(error: any) {
-        if (error.message.includes("VALIDATION_ERROR")) {
-            res.status(400).json({error: error.message});
-        } else {
-            res.status(500).json({error: "Internal Server Error"});
-        }
-    }
+    } catch(error) { next(error); }
 };
 
-export const updateTicket = (req: Request, res: Response) => {
+export const updateTicket = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = req.params.id as string;
-        const dto = req.body;
-
-        const updatedTicket = ticketsService.updateTicket(id, dto);
+        const updatedTicket = ticketsService.updateTicket(id, req.body);
         res.status(200).json(updatedTicket);
-    } catch(error: any) {
-        if (error.message === "NOT_FOUND") {
-            res.status(404).json({error: "Not Found"});
-        } else if(error.message.includes("VALIDATION_ERROR")) {
-            res.status(400).json({error: error.message});
-        } else {
-            res.status(500).json({error: "Internal Server Error"});
-        }
-    }
+    } catch(error) { next(error); }
 };
 
-export const deleteTicket = (req: Request, res: Response) => {
+export const deleteTicket = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = req.params.id as string;
-
         ticketsService.deleteTicket(id);
         res.status(204).send();
-    } catch (error: any) {
-        if (error.message === "NOT_FOUND") {
-            res.status(404).json({ error: "Not Found" });
-        } else {
-            res.status(500).json({ error: "Internal Server Error" });
-        }
-    }
+    } catch (error) { next(error); }
 };
