@@ -1,4 +1,4 @@
-//ІНІЦІАЛІЗАЦІЯ ПРИ ЗАПУСКУ
+//initialisation
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = getActiveUser();
     updateAuthUI(currentUser);
@@ -9,7 +9,8 @@ async function loadTickets() {
     try {
         const response = await fetch('http://localhost:6060/api/tickets');
         if (response.ok) {
-            items = await response.json(); // Отримуємо заявки з сервера
+            const data = await response.json();
+            items = data.items || [];
             rendertable(items);
         }
     } catch (error) {
@@ -17,7 +18,7 @@ async function loadTickets() {
     }
 }
 
-//ЛОГІКА РЕЄСТРАЦІЇ
+
 const closeRegBtn = document.getElementById('closeRegModal');
 const regForm = document.getElementById('regForm');
 
@@ -94,7 +95,7 @@ if (regForm) {
     });
 }
 
-//ЛОГІКА ЗАЯВОК
+
 function Validate(dto) {
     clearErrors();
     let isValid = true;
@@ -207,7 +208,7 @@ if (tbody) {
     });
 }
 
-// Фільтри та сортування
+
 const searchInput = document.getElementById('searchInput');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
