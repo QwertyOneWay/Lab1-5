@@ -40,7 +40,9 @@ const mapToResponseDto = (
   };
 };
 
-export const getAllTickets = (queryParams: Record<string, string> = {},): PaginatedResponse<TicketResponseDto> => {
+export const getAllTickets = (
+  queryParams: Record<string, string> = {},
+): PaginatedResponse<TicketResponseDto> => {
   let tickets = ticketsRepository.getAllTickets();
 
   if (queryParams.status) {
@@ -57,11 +59,17 @@ export const getAllTickets = (queryParams: Record<string, string> = {},): Pagina
 
   if (queryParams.sortBy) {
     tickets.sort((a: ticketsRepository.Ticket, b: ticketsRepository.Ticket) => {
-        let valA: string | number = a[queryParams.sortBy as keyof ticketsRepository.Ticket];
-        let valB: string | number = b[queryParams.sortBy as keyof ticketsRepository.Ticket];
+      let valA: string | number =
+        a[queryParams.sortBy as keyof ticketsRepository.Ticket];
+      let valB: string | number =
+        b[queryParams.sortBy as keyof ticketsRepository.Ticket];
 
       if (queryParams.sortBy === "priority") {
-        const priorityMap: Record<string, number> = { low: 1, medium: 2, high: 3 };
+        const priorityMap: Record<string, number> = {
+          low: 1,
+          medium: 2,
+          high: 3,
+        };
         valA = priorityMap[valA as string] || 0;
         valB = priorityMap[valB as string] || 0;
       }

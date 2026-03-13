@@ -90,3 +90,41 @@ export const validateUpdateUser = (
     return next(new Error("VALIDATION_ERROR: Курс має бути від 1 до 6"));
   next();
 };
+
+export const validateCreateMessage = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const dto = req.body;
+  if (!dto.ticketId)
+    return next(new Error("VALIDATION_ERROR: ID заявки є обов'язковим"));
+  if (!dto.text || dto.text.trim().length < 2)
+    return next(
+      new Error("VALIDATION_ERROR: Текст повідомлення занадто короткий"),
+    );
+  if (!dto.author)
+    return next(new Error("VALIDATION_ERROR: Автор є обов'язковим"));
+  next();
+};
+
+export const validateUpdateMessage = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const dto = req.body;
+  if (
+    dto.text !== undefined &&
+    (typeof dto.text !== "string" || dto.text.trim().length < 2)
+  )
+    return next(
+      new Error("VALIDATION_ERROR: Текст повідомлення занадто короткий"),
+    );
+  if (
+    dto.author !== undefined &&
+    (typeof dto.author !== "string" || dto.author.trim() === "")
+  )
+    return next(new Error("VALIDATION_ERROR: Автор не може бути порожнім"));
+  next();
+};

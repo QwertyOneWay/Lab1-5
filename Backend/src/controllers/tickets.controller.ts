@@ -7,7 +7,9 @@ export const getAllTickets = (
   next: NextFunction,
 ) => {
   try {
-    const tickets = ticketsService.getAllTickets(req.query);
+    const tickets = ticketsService.getAllTickets(
+      req.query as Record<string, string>,
+    );
     res.status(200).json(tickets);
   } catch (error) {
     next(error);
