@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import * as messageServices from "../services/messages.service";
 
-export const getAllMessages = (
+export const getAllMessages = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const messages = messageServices.getAllMessages(
+    const messages = await messageServices.getAllMessages(
       req.query as Record<string, string>,
     );
     res.status(200).json(messages);
@@ -15,39 +15,39 @@ export const getAllMessages = (
     next(error);
   }
 };
-export const getMessageById = (
+export const getMessageById = async(
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const msg = messageServices.getMessageById(req.params.id as string);
+    const msg = await messageServices.getMessageById(req.params.id as string);
     res.status(200).json(msg);
   } catch (error) {
     next(error);
   }
 };
 
-export const createMessage = (
+export const createMessage = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const newMsg = messageServices.createMessage(req.body);
+    const newMsg = await messageServices.createMessage(req.body);
     res.status(201).json(newMsg);
   } catch (error) {
     next(error);
   }
 };
 
-export const updateMessage = (
+export const updateMessage = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const updatedMsg = messageServices.updateMessage(
+    const updatedMsg = await messageServices.updateMessage(
       req.params.id as string,
       req.body,
     );
@@ -57,13 +57,13 @@ export const updateMessage = (
   }
 };
 
-export const deleteMessage = (
+export const deleteMessage = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    messageServices.deleteMessage(req.params.id as string);
+    await messageServices.deleteMessage(req.params.id as string);
     res.status(204).send();
   } catch (error) {
     next(error);

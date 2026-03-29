@@ -40,10 +40,11 @@ const mapToResponseDto = (
   };
 };
 
-export const getAllTickets = (
+export const getAllTickets = async (
   queryParams: Record<string, string> = {},
-): PaginatedResponse<TicketResponseDto> => {
-  let tickets = ticketsRepository.getAllTickets();
+): Promise<PaginatedResponse<TicketResponseDto>> => {
+
+  let tickets = await ticketsRepository.getAllTickets();
 
   if (queryParams.status) {
     tickets = tickets.filter((t) => t.status === queryParams.status);
@@ -93,17 +94,17 @@ export const getAllTickets = (
   };
 };
 
-export const getTicketById = (id: string): TicketResponseDto => {
-  const ticket = ticketsRepository.getTicketById(id);
+export const getTicketById = async (id: string): Promise<TicketResponseDto> => {
+  const ticket = await ticketsRepository.getTicketById(id);
   if (!ticket) {
     throw new Error("NOT_FOUND");
   }
   return mapToResponseDto(ticket);
 };
 
-export const createTicket = (
+export const createTicket = async (
   dto: CreateTicketRequestDto,
-): TicketResponseDto => {
+): Promise<TicketResponseDto> => {
   const newTicket: ticketsRepository.Ticket = {
     id: uuidv4(),
     theme: dto.theme,
@@ -114,15 +115,15 @@ export const createTicket = (
     createdAt: new Date().toISOString(),
   };
 
-  const savedTicket = ticketsRepository.addTicket(newTicket);
+  const savedTicket = await ticketsRepository.addTicket(newTicket);
   return mapToResponseDto(savedTicket);
 };
 
-export const updateTicket = (
+export const updateTicket = async (
   id: string,
   dto: UpdateTicketRequestDto,
-): TicketResponseDto => {
-  const updatedTicket = ticketsRepository.updateTicket(id, dto);
+): Promise<TicketResponseDto> => {
+  const updatedTicket = await ticketsRepository.updateTicket(id, dto);
 
   if (!updatedTicket) {
     throw new Error("NOT_FOUND");
@@ -131,10 +132,19 @@ export const updateTicket = (
   return mapToResponseDto(updatedTicket);
 };
 
-export const deleteTicket = (id: string): boolean => {
-  const isDeleted = ticketsRepository.deleteTicket(id);
+export const deleteTicket = async (id: string): Promise<boolean> => {
+  const isDeleted = await ticketsRepository.deleteTicket(id);
   if (!isDeleted) {
     throw new Error("NOT_FOUND");
   }
   return true;
 };
+
+export const getTicketsStats = async () =>
+    await ticketsRepository.getTicketsStats();
+export const getTicketsWithMessages = async () =>
+    await ticketsRepository.getTicketsWithMessages();
+export const getTopBugs = async () =>
+    await ticketsRepository.getTopBugs();
+export const searchTicketsVulnerable = async (query: string) =>
+    await ticketsRepository.searchTicketsVulnerable(query);

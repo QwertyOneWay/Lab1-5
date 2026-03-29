@@ -22,7 +22,9 @@ export const errorHandler = (
     message = errorMessage.split(": ")[1] || "Невалідна структура запиту";
   }
 
-  console.error(`[Помилка ${statusCode}] ${errorCode}: ${message}`);
+  console.error("🛑 ДЕТАЛІ ПОМИЛКИ (ДЛЯ ДЕБАГУ):");
+  console.error(err);
+  // console.error(`[Помилка ${statusCode}] ${errorCode}: ${message}`);
 
   res.status(statusCode).json({
     error: {

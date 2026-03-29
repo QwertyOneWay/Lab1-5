@@ -1,3 +1,5 @@
+import { all, run, get } from "../db/dbClient";
+
 export interface Message {
   id: string;
   ticketId: string;
@@ -6,33 +8,42 @@ export interface Message {
   createdAt: string;
 }
 
-let messages: Message[] = [];
-
-export const getAllMessages = (): Message[] => {
-  return messages;
+export const getAllMessages = async (): Promise<Message[]> => {
+  return await all<Message>("SELECT * FROM messages;");
 };
 
-export const getMessageById = (id: string): Message | undefined => {
-  return messages.find((message) => message.id === id);
+export const getMessageById = async (id: string): Promise<Message | undefined> => {
+  return await get<Message>(`SELECT * FROM messages WHERE id= '${id}';`);
 };
 
-export const addMessage = (msg: Message): Message => {
-  messages.push(msg);
+export const addMessage = async (msg: Message): Promise<Message> => {
+
+  //vrazlivist
+  await run(`
+    INSERT INTO messages (id, ticketId, text, author, createdAt)
+    VALUES ('${msg.id}', '${msg.ticketId}', '${msg.text}', '${msg.author}', '${msg.createdAt}')
+  `)
   return msg;
 };
 
-export const updateMessage = (
+export const updateMessage = async (
   id: string,
   updatedData: Partial<Message>,
-): Message | null => {
-  const index = messages.findIndex((msg) => msg.id === id);
-  if (index === -1) return null;
-  messages[index] = { ...messages[index], ...updatedData };
-  return messages[index];
+): Promise<Message | null> => {
+  const existingMessage = await getMessageById(id);
+  if (!existingMessage) return null;
+
+  const merged = { ...existingMessage, ...updatedData };
+  await run(`
+  UPDATE messages 
+  SET text = '${merged.text}',
+      author = '${merged.author}'
+  WHERE id= '${id}';
+  `);
+  return merged;
 };
 
-export const deleteMessage = (id: string): boolean => {
-  const initialLength = messages.length;
-  messages = messages.filter((msg) => msg.id !== id);
-  return messages.length !== initialLength;
+export const deleteMessage = async (id: string): Promise<boolean> => {
+  const result = await run(`DELETE FROM messages WHERE id= '${id}';`);
+  return result.changes > 0;
 };

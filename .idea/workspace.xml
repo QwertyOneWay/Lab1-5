@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="0.2.0">
-      <change afterPath="$PROJECT_DIR$/Backend/src/db/db.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/db/dbClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/db/migrate.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" afterDir="false" />
+    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/messages.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/messages.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/db/migrate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/migrate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/services/messages.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/messages.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +58,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.test | #1.executor": "Run",
+    "HTTP Request.test | #11.executor": "Run",
+    "HTTP Request.test | #2.executor": "Run",
+    "HTTP Request.test | #3.executor": "Run",
+    "HTTP Request.test | #4.executor": "Run",
+    "HTTP Request.test | #5.executor": "Run",
+    "HTTP Request.test | #6.executor": "Run",
+    "HTTP Request.test | #8.executor": "Run",
+    "HTTP Request.test | Агрегація.executor": "Run",
+    "HTTP Request.test | Відфільтрувати заявки Bug.executor": "Run",
+    "HTTP Request.test | Звичайний пошук (має знайти заявку, якщо в темі є слово \"Проблема\").executor": "Run",
+    "HTTP Request.test | Створити нову заявку.executor": "Run",
+    "HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT).executor": "Run",
+    "HTTP Request.test | додати меседж.executor": "Run",
     "JavaScript Debug.index.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -70,6 +94,49 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="test | Агрегація" value="STOPPED" />
+              <entry key="test | Відфільтрувати заявки Bug" value="STOPPED" />
+              <entry key="test | Звичайний пошук (має знайти заявку, якщо в темі є слово &quot;Проблема&quot;)" value="STOPPED" />
+              <entry key="test | Створити нову заявку" value="STOPPED" />
+              <entry key="test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)">
+    <configuration name="test | Створити нову заявку" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Створити нову заявку" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | Відфільтрувати заявки Bug" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Відфільтрувати заявки Bug" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | Звичайний пошук (має знайти заявку, якщо в темі є слово &quot;Проблема&quot;)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Звичайний пошук (має знайти заявку, якщо в темі є слово &quot;Проблема&quot;)" index="14" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)" index="13" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | Агрегація" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Агрегація" index="11" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)" />
+        <item itemvalue="HTTP Request.test | Звичайний пошук (має знайти заявку, якщо в темі є слово &quot;Проблема&quot;)" />
+        <item itemvalue="HTTP Request.test | Агрегація" />
+        <item itemvalue="HTTP Request.test | Відфільтрувати заявки Bug" />
+        <item itemvalue="HTTP Request.test | Створити нову заявку" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -109,7 +176,8 @@
       <workItem from="1773401375567" duration="7314000" />
       <workItem from="1773420647444" duration="5161000" />
       <workItem from="1774542227426" duration="588000" />
-      <workItem from="1774775930871" duration="8245000" />
+      <workItem from="1774775930871" duration="25118000" />
+      <workItem from="1774806533203" duration="616000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -279,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773425733803</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="first step of data base">
+      <option name="closed" value="true" />
+      <created>1774789077296</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1774789077296</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +392,7 @@
     <MESSAGE value="backend and frontend" />
     <MESSAGE value="errorHandler logger backend" />
     <MESSAGE value="0.2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.2.0" />
+    <MESSAGE value="first step of data base" />
+    <option name="LAST_COMMIT_MESSAGE" value="first step of data base" />
   </component>
 </project>

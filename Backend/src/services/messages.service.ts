@@ -34,10 +34,10 @@ const mapToResponseDto = (
   };
 };
 
-export const getAllMessages = (
+export const getAllMessages = async (
   queryParams: Record<string, string> = {},
-): PaginatedResponse<MessageResponseDto> => {
-  let messages = messagesRepository.getAllMessages();
+): Promise<PaginatedResponse<MessageResponseDto>> => {
+  let messages = await messagesRepository.getAllMessages();
 
   if (queryParams.ticketId) {
     messages = messages.filter((m) => m.ticketId === queryParams.ticketId);
@@ -51,13 +51,13 @@ export const getAllMessages = (
   return { items, total: items.length };
 };
 
-export const getMessageById = (id: string): MessageResponseDto => {
-  const msg = messagesRepository.getMessageById(id);
+export const getMessageById = async (id: string): Promise<MessageResponseDto> => {
+  const msg =  await messagesRepository.getMessageById(id);
   if (!msg) throw new Error("NOT_FOUND");
   return mapToResponseDto(msg);
 };
 
-export const createMessage = (dto: CreateMessageDto): MessageResponseDto => {
+export const createMessage = async (dto: CreateMessageDto): Promise<MessageResponseDto> => {
   const newMessage: messagesRepository.Message = {
     id: uuidv4(),
     ticketId: dto.ticketId,
@@ -65,21 +65,21 @@ export const createMessage = (dto: CreateMessageDto): MessageResponseDto => {
     author: dto.author,
     createdAt: new Date().toISOString(),
   };
-  const savedMsg = messagesRepository.addMessage(newMessage);
+  const savedMsg = await messagesRepository.addMessage(newMessage);
   return mapToResponseDto(savedMsg);
 };
 
-export const updateMessage = (
+export const updateMessage = async (
   id: string,
   dto: UpdateMessageDto,
-): MessageResponseDto => {
-  const updatedMsg = messagesRepository.updateMessage(id, dto);
+): Promise<MessageResponseDto> => {
+  const updatedMsg = await messagesRepository.updateMessage(id, dto);
   if (!updatedMsg) throw new Error("NOT_FOUND");
   return mapToResponseDto(updatedMsg);
 };
 
-export const deleteMessage = (id: string): boolean => {
-  const isDeleted = messagesRepository.deleteMessage(id);
+export const deleteMessage = async (id: string): Promise<boolean> => {
+  const isDeleted = await messagesRepository.deleteMessage(id);
   if (!isDeleted) throw new Error("NOT_FOUND");
   return true;
 };

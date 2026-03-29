@@ -1,0 +1,80 @@
+//USERS
+### додати нового користувача
+POST http://localhost:6060/api/users
+Content-Type: application/json
+
+{
+"userFullName": "UserName",
+"userEmail": "somebody@gmail.com",
+"userCourse": 3
+}
+
+### список користувачів
+GET http://localhost:6060/api/users
+
+### Пошук користувача за іменем
+GET http://localhost:6060/api/users?search=Somebody
+
+
+//TICKETS
+### Створити нову заявку
+POST http://localhost:6060/api/tickets
+Content-Type: application/json
+
+{
+  "theme": "Problem with data base",
+  "status": "Bug",
+  "priority": "high",
+  "comment": "SQLite throw error",
+  "username": "Somebody"
+}
+
+### Отримати список усіх заявок
+GET http://localhost:6060/api/tickets
+
+### Відфільтрувати заявки Bug
+GET http://localhost:6060/api/tickets?status=Bug
+
+### Оновити  заявки
+PUT http://localhost:6060/api/tickets/id
+Content-Type: application/json
+
+{
+  "comment": "SQLite working great!"
+}
+
+### Видалити заявку
+DELETE http://localhost:6060/api/tickets/id
+
+
+//MESSAGES
+### додати меседж
+POST http://localhost:6060/api/messages
+Content-Type: application/json
+
+{
+  "ticketId": "",
+  "text": "TEST TEST MESSAGES TEST TEST",
+  "author": "Somebody"
+}
+
+### Oтримати всі повідомлення для конкретної заявки
+GET http://localhost:6060/api/messages?ticketId=id
+
+//http
+
+### Агрегація
+GET http://localhost:6060/api/tickets/advanced/stats
+
+### Об'єднання: Заявки разом з текстами повідомлень (JOIN)
+GET http://localhost:6060/api/tickets/advanced/with-messages
+
+### Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)
+GET http://localhost:6060/api/tickets/advanced/top-bugs
+
+### Звичайний пошук (має знайти заявку, якщо в темі є слово "Проблема")
+GET http://localhost:6060/api/tickets/advanced/search?q=Проблема
+
+### ДЕМОНСТРАЦІЯ SQL-ІН'ЄКЦІЇ
+# Цей запит ігнорує пошук і витягує АБСОЛЮТНО ВСІ заявки з бази
+GET http://localhost:6060/api/tickets/advanced/search?q=' OR 1=1 --

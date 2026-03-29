@@ -31,39 +31,31 @@ const mapToResponseDto = (user: usersRepository.User): UserResponseDto => {
   };
 };
 
-export const getAllUsers = (
-  queryParams: any = {},
-): PaginatedResponse<UserResponseDto> => {
-  let users = usersRepository.getAllUsers();
+export const getAllUsers = async (queryParams: any = {}): Promise<PaginatedResponse<UserResponseDto>> => {
+  let users = await usersRepository.getAllUsers();
 
   if (queryParams.search) {
     const query = queryParams.search.toLowerCase();
     users = users.filter(
-      (u) =>
-        u.userFullName.toLowerCase().includes(query) ||
-        u.userEmail.toLowerCase().includes(query),
+        (u) => u.userFullName.toLowerCase().includes(query) ||
+            u.userEmail.toLowerCase().includes(query)
     );
   }
 
-  users.sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
-
+  users.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   const items = users.map(mapToResponseDto);
 
-  return {
-    items: items,
-    total: items.length,
-  };
+  return{items: items, total: items.length};
 };
 
-export const getUserById = (id: string): UserResponseDto => {
-  const user = usersRepository.getUserById(id);
-  if (!user) throw new Error("NOT_FOUND");
+
+export const getUserById = async (id: string): Promise<UserResponseDto> => {
+  const user = await usersRepository.getUserById(id);
+  if (!user) throw new Error("User not found");
   return mapToResponseDto(user);
 };
 
-export const createUser = (dto: CreateUserRequestDto): UserResponseDto => {
+export const createUser = async (dto: CreateUserRequestDto): Promise<UserResponseDto> => {
   const newUser: usersRepository.User = {
     id: uuid(),
     userFullName: dto.userFullName,
@@ -72,22 +64,18 @@ export const createUser = (dto: CreateUserRequestDto): UserResponseDto => {
     createdAt: new Date().toISOString(),
   };
 
-  const savedUser = usersRepository.addUser(newUser);
+  const savedUser = await usersRepository.addUser(newUser);
   return mapToResponseDto(savedUser);
 };
 
-export const updateUser = (
-  id: string,
-  dto: UpdateUserRequestDto,
-): UserResponseDto => {
-  const updatedUser = usersRepository.updateUser(id, dto);
+export const updateUser = async ( id: string, dto: UpdateUserRequestDto,): Promise<UserResponseDto> => {
+  const updatedUser = await usersRepository.updateUser(id, dto);
   if (!updatedUser) throw new Error("NOT_FOUND");
-
   return mapToResponseDto(updatedUser);
 };
 
-export const deleteUser = (id: string): boolean => {
-  const isDeleted = usersRepository.deleteUser(id);
+export const deleteUser = async (id: string): Promise<boolean> => {
+  const isDeleted = await usersRepository.deleteUser(id);
   if (!isDeleted) throw new Error("NOT_FOUND");
   return true;
 };

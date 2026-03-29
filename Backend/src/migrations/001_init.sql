@@ -22,5 +22,5 @@ CREATE TABLE IF NOT EXISTS Messages(
     text TEXT NOT NULL,
     author TEXT NOT NULL,
     createdAt TEXT NOT NULL,
-    FOREIGN KEY (ticketId) REFERENCES Tickets (id) ON DELETE CASSCADE
+    FOREIGN KEY (ticketId) REFERENCES Tickets (id) ON DELETE CASCADE
 );
