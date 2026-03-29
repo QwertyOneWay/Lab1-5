@@ -5,6 +5,7 @@ import usersRoutes from "./routes/users.routes";
 import messagesRoutes from "./routes/messages.routes";
 import { requestLogger } from "./middlewares/logger";
 import { errorHandler } from "./middlewares/errorHandler";
+import { migrate } from "./db/migrate";
 
 const app = express();
 const port = 6060;
@@ -29,7 +30,20 @@ app.get("/", (req, res) => {
   );
 });
 
-app.listen(port, () => {
-  console.log(`Сервер успішно запущено на http://localhost:${port}`);
-  console.log(`Доступні маршрути для заявок: /api/tickets /api/users /api/messages`);
-});
+async function bootstrap() {
+  try {
+    await migrate();
+
+    app.listen(port, () => {
+      console.log(`Сервер успішно запущено на http://localhost:${port}`);
+      console.log(`Доступні маршрути для заявок: /api/tickets /api/users /api/messages`);
+    });
+  } catch (error) {
+    console.error("Server Error", error);
+    process.exit(1);
+  }
+}
+
+bootstrap();
+
+
