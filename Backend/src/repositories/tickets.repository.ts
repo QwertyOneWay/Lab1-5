@@ -17,7 +17,7 @@ export const getAllTickets = async (): Promise<Ticket[]> => {
 };
 
 export const getTicketById = async (id: string): Promise<Ticket | undefined> => {
-  return await get<Ticket>(`SELECT * FROM Tickets WHERE id = '${id}';`);
+  return await get<Ticket>(`SELECT * FROM Tickets WHERE id = '${id}' ;`);
 };
 
 export const addTicket = async (ticket: Ticket): Promise<Ticket> => {
@@ -54,7 +54,7 @@ export const updateTicket = async ( id: string, updatedData: Partial<Ticket>,): 
         createdAt = '${merged.createdAt}'
     WHERE id = '${id}';
   `);
-  return merged;
+  return merged as Ticket;
 };
 
 export const deleteTicket = async (id: string): Promise<boolean> => {

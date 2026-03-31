@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS Users(
     id TEXT PRIMARY KEY,
     userFullName TEXT NOT NULL,
     userEmail TEXT NOT NULL UNIQUE,
-    userCourse INTEGER NOT NULL,
+    userCourse INTEGER NOT NULL CHECK(userCourse >= 1 AND userCourse <= 6),
     createdAt TEXT NOT NULL
 );
 

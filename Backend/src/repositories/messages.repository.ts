@@ -40,7 +40,7 @@ export const updateMessage = async (
       author = '${merged.author}'
   WHERE id= '${id}';
   `);
-  return merged;
+  return merged as Message;
 };
 
 export const deleteMessage = async (id: string): Promise<boolean> => {

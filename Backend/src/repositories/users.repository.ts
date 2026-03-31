@@ -19,10 +19,12 @@ export const getUserById = async (id: string): Promise<User | undefined> => {
 
 export const addUser = async (user: User): Promise<User> => {
 
+  const safeFullName = user.userFullName.replace(/'/g, "''");
+
   //vrazlivist
   await run(`
   INSERT INTO Users(id, userFullName, userEmail, userCourse, createdAt)
-  VALUES ('${user.id}', '${user.userFullName}', '${user.userEmail}', ${user.userCourse}, '${user.createdAt}');
+  VALUES ('${user.id}', '${safeFullName}', '${user.userEmail}', ${user.userCourse}, '${user.createdAt}');
   `);
   return user;
 };
@@ -32,15 +34,16 @@ export const updateUser = async ( id: string, updatedData: Partial<User>): Promi
   if (!existingUser) return null;
 
   const merged =  { ...existingUser, ...updatedData };
+  const safeFullName = merged.userFullName.replace(/'/g, "''");
 
   await run(`
     UPDATE Users
-    SET userFullName = '${merged.userFullName}',
+    SET userFullName = '${safeFullName}',
         userEmail = '${merged.userEmail}',
         userCourse = '${merged.userCourse}'
     WHERE id = '${id}';
   `);
-  return merged;
+  return merged as User;
 }
 
 export const deleteUser = async (id: string): Promise<boolean> => {

@@ -4,23 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test.http" afterDir="false" />
+    <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="tickets users messages was connected to data base">
+      <change afterPath="$PROJECT_DIR$/Backend/src/migrations/002_add_indexes.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/migrations/003_seed.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/messages.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/messages.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/tickets.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/db/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/db.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/db/migrate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/migrate.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/routes/tickets.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/services/messages.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/messages.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/tickets.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,44 +52,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.test | #1.executor": "Run",
-    "HTTP Request.test | #11.executor": "Run",
-    "HTTP Request.test | #2.executor": "Run",
-    "HTTP Request.test | #3.executor": "Run",
-    "HTTP Request.test | #4.executor": "Run",
-    "HTTP Request.test | #5.executor": "Run",
-    "HTTP Request.test | #6.executor": "Run",
-    "HTTP Request.test | #8.executor": "Run",
-    "HTTP Request.test | Агрегація.executor": "Run",
-    "HTTP Request.test | Відфільтрувати заявки Bug.executor": "Run",
-    "HTTP Request.test | Звичайний пошук (має знайти заявку, якщо в темі є слово \"Проблема\").executor": "Run",
-    "HTTP Request.test | Створити нову заявку.executor": "Run",
-    "HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT).executor": "Run",
-    "HTTP Request.test | додати меседж.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "D:\\1Project\\Backend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.test | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #11.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #3.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #5.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #6.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | #8.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Агрегація.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Відфільтрувати заявки Bug.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Звичайний пошук (має знайти заявку, якщо в темі є слово \&quot;Проблема\&quot;).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Створити нову заявку.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | додати меседж.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\1Project\\Backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
       <map>
@@ -112,9 +108,6 @@
     </option>
   </component>
   <component name="RunManager" selected="HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)">
-    <configuration name="test | Створити нову заявку" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Створити нову заявку" index="4" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="test | Відфільтрувати заявки Bug" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Відфільтрувати заявки Bug" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -125,6 +118,9 @@
       <method v="2" />
     </configuration>
     <configuration name="test | Агрегація" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Агрегація" index="11" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | Створити нову заявку" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Створити нову заявку" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -177,7 +173,8 @@
       <workItem from="1773420647444" duration="5161000" />
       <workItem from="1774542227426" duration="588000" />
       <workItem from="1774775930871" duration="25118000" />
-      <workItem from="1774806533203" duration="616000" />
+      <workItem from="1774806533203" duration="835000" />
+      <workItem from="1774962270570" duration="7027000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -355,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774789077296</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="tickets users messages was connected to data base">
+      <option name="closed" value="true" />
+      <created>1774807197259</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1774807197259</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,6 +398,7 @@
     <MESSAGE value="errorHandler logger backend" />
     <MESSAGE value="0.2.0" />
     <MESSAGE value="first step of data base" />
-    <option name="LAST_COMMIT_MESSAGE" value="first step of data base" />
+    <MESSAGE value="tickets users messages was connected to data base" />
+    <option name="LAST_COMMIT_MESSAGE" value="tickets users messages was connected to data base" />
   </component>
 </project>

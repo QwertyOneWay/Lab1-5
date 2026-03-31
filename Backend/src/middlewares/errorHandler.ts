@@ -20,9 +20,16 @@ export const errorHandler = (
     statusCode = 400;
     errorCode = "VALIDATION_ERROR";
     message = errorMessage.split(": ")[1] || "Невалідна структура запиту";
+  } else if (errorMessage.includes("UNIQUE constraint failed")) {
+    statusCode = 409;
+    errorCode = "CONFLICT";
+    message = "Такий запис вже існує"
   }
 
-  console.error("🛑 ДЕТАЛІ ПОМИЛКИ (ДЛЯ ДЕБАГУ):");
+
+
+
+  console.error("!!! ДЕТАЛІ ПОМИЛКИ:");
   console.error(err);
   // console.error(`[Помилка ${statusCode}] ${errorCode}: ${message}`);
 

@@ -31,7 +31,7 @@
 * `author` (TEXT, NOT NULL)
 * `createdAt` (TEXT, NOT NULL)
 
-## ⚠️ Демонстрація SQL-ін'єкції (Навчальна мета)
+## Демонстрація SQL-ін'єкції 
 У проєкті реалізовано спеціально вразливий ендпойнт для пошуку заявок:
 `GET /api/tickets/advanced/search?q=...`
 

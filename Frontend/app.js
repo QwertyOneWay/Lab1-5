@@ -87,7 +87,7 @@ if (regForm) {
                 regForm.reset();
             } else {
                 const errorData = await response.json();
-                document.getElementById("regServer-error").innerHTML = errorData.error;
+                document.getElementById("regServer-error").innerHTML = errorData.error.message;
             }
         } catch (error) {
             document.getElementById("regServer-error").innerHTML = 'Сервер недоступний. Запусти Backend!';
@@ -166,7 +166,7 @@ if (createForm) {
                 });
                 if (!response.ok) {
                     const errorData = await response.json();
-                    alert(`Помилка створення: ${errorData.error}`);
+                    alert(`Помилка створення: ${errorData.error.message}`);
                     return;
                 }
             }
