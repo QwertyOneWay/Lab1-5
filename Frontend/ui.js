@@ -85,3 +85,20 @@ function updateAuthUI(user) {
         }
     }
 }
+
+function showTableLoading(isLoading) {
+    if(!tbody) return;
+    if (isLoading) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;"> Завантаження даних...</td></tr>';
+    }
+}
+
+function showTableEmpty() {
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td colspan="7" style ="text-align: center; color: gray;">Заявок поки немає. Створіть першу!</td></tr>';
+}
+
+function showTableError(message) {
+    if(!tbody) return;
+    tbody.innerHTML = `<tr><td colspan = "7" style = "text-align: center; color: red;"> Помилка: ${message}</td></tr>`;
+}

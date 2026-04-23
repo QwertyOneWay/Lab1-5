@@ -6,15 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loadTickets() {
+    showTableLoading(true);
     try {
-        const response = await fetch('http://localhost:6060/api/tickets');
-        if (response.ok) {
-            const data = await response.json();
-            items = data.items || [];
+        const data = await apiClient.get('/tickets');
+        items = data.items || [];
+
+        if(items.length === 0){
+            showTableEmpty();
+        } else {
             rendertable(items);
         }
-    } catch (error) {
-        console.error('Не вдалося завантажити заявки:', error);
+
+    } catch (error){
+        showTableError(error.message);
     }
 }
 
@@ -149,34 +153,19 @@ if (createForm) {
 
         try {
             if (editingId) {
-                const response = await fetch(`http://localhost:6060/api/tickets/${editingId}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(ticketPayload)
-                });
-                if (response.ok) {
-                    editingId = null;
-                    document.getElementById('addBtn').textContent = "Додати заявку";
-                } else { alert("Помилка при оновленні заявки"); return; }
+                await apiClient.put(`/tickets/${editingId}`, ticketPayload);
+                editingId = null;
+                const btn = document.getElementById('addBtn');
+                if (btn) btn.textContent = "Додати заявку";
             } else {
-                const response = await fetch('http://localhost:6060/api/tickets', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(ticketPayload)
-                });
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    alert(`Помилка створення: ${errorData.error.message}`);
-                    return;
-                }
+                await apiClient.post('/tickets', ticketPayload);
             }
 
             await loadTickets();
             clearForm();
             updateAuthUI(getActiveUser());
-
-        } catch (error) {
-            alert("Сервер недоступний. Перевір Backend!");
+        } catch(error) {
+            alert(`Помилка: ${error.message}`);
         }
     });
 }
@@ -191,7 +180,9 @@ if (tbody) {
             if (item) {
                 fillForm(item);
                 editingId = id;
-                document.getElementById('addBtn').textContent ='Зберегти';
+
+                const btn = document.getElementById('addBtn');
+                if (btn) btn.textContent = 'Зберегти';
             }
         }
 
@@ -199,10 +190,11 @@ if (tbody) {
             const id = target.getAttribute('data-id');
             if (confirm('Видалити цю заявку?')) {
                 try {
-                    const response = await fetch(`http://localhost:6060/api/tickets/${id}`, { method: 'DELETE' });
-                    if (response.ok) { await loadTickets(); }
-                    else { alert("Помилка при видаленні на сервері"); }
-                } catch (error) { alert("Сервер недоступний!"); }
+                    await apiClient.delete(`/tickets/${id}`);
+                    await loadTickets();
+                } catch (error) {
+                    alert(`Помилка видалення: ${error.message}`);
+                }
             }
         }
     });

@@ -10,7 +10,14 @@ import { migrate } from "./db/migrate";
 const app = express();
 const port = 6060;
 
-app.use(cors());
+
+const corsOptions = {
+  origin: "http://localhost:63342",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 //logger

@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ac4cd8-fead-4f7f-9975-ee2ecb673d8f" name="Changes" comment="tickets users messages was connected to data base">
-      <change afterPath="$PROJECT_DIR$/Backend/src/migrations/002_add_indexes.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/migrations/003_seed.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/apiClient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/db/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/db/migrate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/migrate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/middlewares/errorHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/migrations/001_init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/messages.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/tickets.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/users.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/ui.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +18,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="03affc491bc0e74210a01901074c76bf7bbca996" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -84,7 +83,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\1Project\\Backend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -107,7 +106,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)">
+  <component name="RunManager" selected="HTTP Request.test | Агрегація">
     <configuration name="test | Відфільтрувати заявки Bug" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" executionIdentifier="Відфільтрувати заявки Bug" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -125,9 +124,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.test | Агрегація" />
         <item itemvalue="HTTP Request.test | Фільтрація та ліміт: 2 найсвіжіші баги (WHERE + ORDER BY + LIMIT)" />
         <item itemvalue="HTTP Request.test | Звичайний пошук (має знайти заявку, якщо в темі є слово &quot;Проблема&quot;)" />
-        <item itemvalue="HTTP Request.test | Агрегація" />
         <item itemvalue="HTTP Request.test | Відфільтрувати заявки Bug" />
         <item itemvalue="HTTP Request.test | Створити нову заявку" />
       </list>
@@ -175,6 +174,9 @@
       <workItem from="1774775930871" duration="25118000" />
       <workItem from="1774806533203" duration="835000" />
       <workItem from="1774962270570" duration="7027000" />
+      <workItem from="1776012635372" duration="3272000" />
+      <workItem from="1776422820165" duration="3779000" />
+      <workItem from="1776863974019" duration="5992000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
