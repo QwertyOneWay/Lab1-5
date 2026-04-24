@@ -40,6 +40,10 @@ export const updateTicket = async ( id: string, updatedData: Partial<Ticket>,): 
 
   const merged = { ...existingTicket, ...updatedData};
 
+  console.log(" ОТРИМАНО ID ДЛЯ ОНОВЛЕННЯ:", id);
+  console.log(" ДАНІ З ФРОНТЕНДУ:", updatedData);
+  console.log(" РЕЗУЛЬТАТ ЗЛИТТЯ:", merged);
+
   const safeTheme = merged.theme.replace(/'/g, "''");
   const safeComment = merged.comment.replace(/'/g, "''");
   const safeUsername = merged.username.replace(/'/g, "''");

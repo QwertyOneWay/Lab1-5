@@ -50,6 +50,7 @@ export const updateTicket = async (
 ) => {
   try {
     const id = req.params.id as string;
+    console.log("Метод PUT, ID:", id, "Дані:", req.body);
     const updatedTicket = await ticketsService.updateTicket(id, req.body);
     res.status(200).json(updatedTicket);
   } catch (error) {

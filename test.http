@@ -22,11 +22,11 @@ POST http://localhost:6060/api/tickets
 Content-Type: application/json
 
 {
-  "theme": "Problem with data base",
+  "theme": "фівфівфів",
   "status": "Bug",
   "priority": "high",
-  "comment": "SQLite throw error",
-  "username": "Somebody"
+  "comment": "SQLite throw error 2 2 2 22  2",
+  "username": "Somebody2  2 22  2"
 }
 
 ### Отримати список усіх заявок
@@ -53,7 +53,7 @@ POST http://localhost:6060/api/messages
 Content-Type: application/json
 
 {
-  "ticketId": "",
+  "ticketId": "2d83994c-cc03-461f-b718-e0b03656de66",
   "text": "TEST TEST MESSAGES TEST TEST",
   "author": "Somebody"
 }

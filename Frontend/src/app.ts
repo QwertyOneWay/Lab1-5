@@ -1,4 +1,16 @@
-//initialisation
+import { apiClient } from './apiClient.js';
+import { TicketDto, UserDto } from './dto.js';
+import {
+    items, editingId, setItems, setEditingId, getEditingId,
+    getActiveUser, saveActiveUser, clearActiveUser
+} from './state.js';
+import {
+    rendertable, showTableLoading, showTableEmpty, showTableError,
+    createForm, tbody, loginBtn, regModal, resetBtn,
+    showRegModal, hideRegModal, clearError, clearErrors, showError,
+    fillForm, clearForm, updateAuthUI
+} from './ui.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = getActiveUser();
     updateAuthUI(currentUser);
@@ -8,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadTickets() {
     showTableLoading(true);
     try {
-        const data = await apiClient.get('/tickets');
-        items = data.items || [];
+        const data = await apiClient.getTickets();
+        setItems(data.items || []);
 
         if(items.length === 0){
             showTableEmpty();
@@ -17,14 +29,13 @@ async function loadTickets() {
             rendertable(items);
         }
 
-    } catch (error){
+    } catch (error: any){
         showTableError(error.message);
     }
 }
 
-
 const closeRegBtn = document.getElementById('closeRegModal');
-const regForm = document.getElementById('regForm');
+const regForm = document.getElementById('regForm') as HTMLFormElement | null;
 
 if (loginBtn) {
     loginBtn.addEventListener('click', (e) => {
@@ -45,7 +56,7 @@ window.addEventListener('click', (event) => {
     if (event.target === regModal) hideRegModal();
 });
 
-function ValidateRegistration(dto) {
+function ValidateRegistration(dto: UserDto): boolean {
     clearError("regFullName", "regFullName-error");
     clearError("regEmail", "regEmail-error");
     clearError("regCourse", "regCourse-error");
@@ -64,11 +75,11 @@ function ValidateRegistration(dto) {
 if (regForm) {
     regForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        /** @type {HTMLInputElement} */ const nameInput = document.getElementById('regFullName');
-        /** @type {HTMLInputElement} */ const emailInput = document.getElementById('regEmail');
-        /** @type {HTMLSelectElement} */ const courseSelect = document.getElementById('regCourse');
+        const nameInput = document.getElementById('regFullName') as HTMLInputElement;
+        const emailInput = document.getElementById('regEmail') as HTMLInputElement;
+        const courseSelect = document.getElementById('regCourse') as HTMLSelectElement;
 
-        const newUserDto = {
+        const newUserDto: UserDto = {
             userFullName: nameInput.value.trim(),
             userEmail: emailInput.value.trim(),
             userCourse: courseSelect.value ? Number(courseSelect.value) : 0
@@ -77,30 +88,20 @@ if (regForm) {
         if (!ValidateRegistration(newUserDto)) return;
 
         try {
-            const response = await fetch('http://localhost:6060/api/users', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newUserDto)
-            });
-
-            if (response.status === 201) {
-                const savedUser = await response.json();
-                saveActiveUser(savedUser);
-                hideRegModal();
-                updateAuthUI(savedUser);
-                regForm.reset();
-            } else {
-                const errorData = await response.json();
-                document.getElementById("regServer-error").innerHTML = errorData.error.message;
-            }
-        } catch (error) {
-            document.getElementById("regServer-error").innerHTML = 'Сервер недоступний. Запусти Backend!';
+            const savedUser = await apiClient.createUser(newUserDto);
+            saveActiveUser(savedUser);
+            hideRegModal();
+            updateAuthUI(savedUser);
+            regForm.reset();
+        } catch (error: any) {
+            const errEl = document.getElementById("regServer-error");
+            if (errEl) errEl.innerHTML = error.message || 'Сервер недоступний';
         }
     });
 }
 
 
-function Validate(dto) {
+function Validate(dto: TicketDto): boolean {
     clearErrors();
     let isValid = true;
     const theme = dto.theme.trim();
@@ -127,13 +128,13 @@ function Validate(dto) {
     return isValid;
 }
 
-function readForm(){
+function readForm(): TicketDto {
     return {
-        theme: document.getElementById("theme").value,
-        status: document.getElementById("status").value,
-        priority: document.getElementById("priority").value,
-        comment: document.getElementById("comment").value,
-        username: document.getElementById("username").value
+        theme: (document.getElementById("theme") as HTMLInputElement).value,
+        status: (document.getElementById("status") as HTMLSelectElement).value,
+        priority: (document.getElementById("priority") as HTMLSelectElement).value,
+        comment: (document.getElementById("comment") as HTMLTextAreaElement).value,
+        username: (document.getElementById("username") as HTMLInputElement).value
     };
 }
 
@@ -143,28 +144,22 @@ if (createForm) {
         const dto = readForm();
         if (!Validate(dto)) return;
 
-        const ticketPayload = {
-            theme: dto.theme,
-            status: dto.status,
-            priority: dto.priority,
-            comment: dto.comment,
-            username: dto.username
-        };
+        const currentEditingId = getEditingId();
 
         try {
-            if (editingId) {
-                await apiClient.put(`/tickets/${editingId}`, ticketPayload);
-                editingId = null;
+            if (currentEditingId) {
+                await apiClient.updateTicket(currentEditingId, dto);
+                setEditingId(null);
                 const btn = document.getElementById('addBtn');
                 if (btn) btn.textContent = "Додати заявку";
             } else {
-                await apiClient.post('/tickets', ticketPayload);
+                await apiClient.createTicket(dto);
             }
 
             await loadTickets();
             clearForm();
             updateAuthUI(getActiveUser());
-        } catch(error) {
+        } catch(error: any) {
             alert(`Помилка: ${error.message}`);
         }
     });
@@ -172,27 +167,29 @@ if (createForm) {
 
 if (tbody) {
     tbody.addEventListener('click', async (e) => {
-        /** @type {HTMLElement} */ const target = e.target;
+        const target = e.target as HTMLElement;
 
         if (target.classList.contains('edit-btn')) {
             const id = target.getAttribute('data-id');
-            const item = items.find(item => item.id === id);
+            const item = items.find(item => String(item.id) === String(id));
             if (item) {
                 fillForm(item);
-                editingId = id;
+                setEditingId(id ?? null);
 
                 const btn = document.getElementById('addBtn');
                 if (btn) btn.textContent = 'Зберегти';
+            } else {
+                console.error(`Помилка: Заявку з id [${id}] не знайдено в масиві!`);
             }
         }
 
         if (target.classList.contains('delete-btn')) {
             const id = target.getAttribute('data-id');
-            if (confirm('Видалити цю заявку?')) {
+            if (id && confirm('Видалити цю заявку?')) {
                 try {
-                    await apiClient.delete(`/tickets/${id}`);
+                    await apiClient.deleteTicket(id);
                     await loadTickets();
-                } catch (error) {
+                } catch (error: any) {
                     alert(`Помилка видалення: ${error.message}`);
                 }
             }
@@ -200,11 +197,10 @@ if (tbody) {
     });
 }
 
-
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('searchInput') as HTMLInputElement | null;
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
-        /** @type {HTMLInputElement} */ const target = e.target;
+        const target = e.target as HTMLInputElement;
         const query = target.value.toLowerCase();
         const filteredItems = items.filter(item =>
             item.theme.toLowerCase().includes(query) || item.username.toLowerCase().includes(query)
@@ -213,10 +209,10 @@ if (searchInput) {
     });
 }
 
-const filterStatus = document.getElementById('filterStatus');
+const filterStatus = document.getElementById('filterStatus') as HTMLSelectElement | null;
 if (filterStatus) {
     filterStatus.addEventListener('change', (e) => {
-        /** @type {HTMLSelectElement} */ const target = e.target;
+        const target = e.target as HTMLSelectElement;
         const statusVal = target.value;
         const filteredItems = statusVal ? items.filter(item => item.status === statusVal) : items;
         rendertable(filteredItems);
@@ -226,17 +222,17 @@ if (filterStatus) {
 const sortByDateBtn = document.getElementById('sortByDateBtn');
 if (sortByDateBtn) {
     sortByDateBtn.addEventListener('click', () => {
-        items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        rendertable(items);
+        const sortedItems = [...items].sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
+        rendertable(sortedItems);
     });
 }
 
 const sortByPriorityBtn = document.getElementById('sortByPriorityBtn');
 if (sortByPriorityBtn) {
     sortByPriorityBtn.addEventListener('click', () => {
-        const priorityOrder = { high: 3, medium: 2, low: 1 };
-        items.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
-        rendertable(items);
+        const priorityOrder: Record<string, number> = { high: 3, medium: 2, low: 1 };
+        const sortedItems = [...items].sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
+        rendertable(sortedItems);
     });
 }
 
