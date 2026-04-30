@@ -24,9 +24,9 @@ app.use(express.json());
 app.use(requestLogger);
 
 //routes
-app.use("/api/tickets", ticketsRoutes);
-app.use("/api/users", usersRoutes);
-app.use("/api/messages", messagesRoutes);
+app.use("/api/v1/tickets", ticketsRoutes);
+app.use("/api/v1/users", usersRoutes);
+app.use("/api/v1/messages", messagesRoutes);
 
 //obrobnik pomylok
 app.use(errorHandler);

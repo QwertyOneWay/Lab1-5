@@ -183,6 +183,24 @@ if (tbody) {
             }
         }
 
+        if (!target.classList.contains('edit-btn') && !target.classList.contains('delete-btn')) {
+            const row = target.closest('tr');
+            if (row) {
+                const editBtn = row.querySelector('.edit-btn');
+                const id = editBtn?.getAttribute('data-id');
+                if (id) {
+                    try {
+                        const ticketDetails = await apiClient.getTicketById(id);
+                        console.log("Деталі заявки (GET /api/v1/tickets/{id}):", ticketDetails);
+                        alert(`Деталі заявки:\nТема: ${ticketDetails.theme}\nАвтор: ${ticketDetails.username}`);
+                    } catch (err) {
+                        console.error(err);
+                    }
+                }
+            }
+        }
+
+
         if (target.classList.contains('delete-btn')) {
             const id = target.getAttribute('data-id');
             if (id && confirm('Видалити цю заявку?')) {

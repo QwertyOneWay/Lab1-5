@@ -142,9 +142,13 @@ export const deleteTicket = async (id: string): Promise<boolean> => {
 
 export const getTicketsStats = async () =>
     await ticketsRepository.getTicketsStats();
+
 export const getTicketsWithMessages = async () =>
     await ticketsRepository.getTicketsWithMessages();
+
 export const getTopBugs = async () =>
     await ticketsRepository.getTopBugs();
+
 export const searchTicketsVulnerable = async (query: string) =>
     await ticketsRepository.searchTicketsVulnerable(query);
+

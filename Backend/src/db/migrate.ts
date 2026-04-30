@@ -39,7 +39,7 @@ export const migrate = async () => {
             }
         }
 
-        console.log(" Усі міграції бази даних актуальні!");
+        console.log("Усі міграції бази даних актуальні!");
     } catch (error) {
         console.error("Помилка під час міграції бази даних:", error);
     }

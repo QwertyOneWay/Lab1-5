@@ -1,6 +1,6 @@
 import {TicketDto, UserDto, MessageDto, PaginatedResponse} from "./dto";
 
-const BASE_URL = 'http://localhost:6060/api';
+const BASE_URL = 'http://localhost:6060/api/v1';
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const url = `${BASE_URL}${endpoint}`;
@@ -45,6 +45,7 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
 }
 
 export const apiClient = {
+    getTicketById: (id: string) => request<TicketDto>(`/tickets/${id}`),
     getTickets: () => request<PaginatedResponse<TicketDto>>('/tickets'),
     createTicket: (body: TicketDto) => request<TicketDto>('/tickets', { method: 'POST', body: JSON.stringify(body) }),
     updateTicket: (id: string, body: TicketDto) => request<TicketDto>(`/tickets/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
