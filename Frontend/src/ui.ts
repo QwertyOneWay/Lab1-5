@@ -1,5 +1,13 @@
 import {TicketDto, UserDto} from "./dto";
 
+function escapeHTML(str: string) {
+    if (!str) return "";
+        return str.replace(/[&<>'"]/g, tag => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+        } [tag] || tag));
+
+}
+
 export const createForm = document.getElementById('createForm') as HTMLFormElement | null;
 export const resetBtn = document.getElementById('resetBtn') as HTMLButtonElement | null;
 export const tbody = document.getElementById('itemstablebody') as HTMLTableSectionElement | null;
@@ -46,11 +54,11 @@ export function rendertable(dataItems: TicketDto[]) {
     const rowsHtml = dataItems.map((item, index) => `
         <tr>
             <td>${index + 1}</td>
-            <td>${item.theme}</td>
+            <td>${escapeHTML(item.theme)}</td>
             <td>${item.status}</td>
             <td>${item.priority}</td>
-            <td><div class ="scroll-wrapper">${item.comment}</div></td>
-            <td>${item.username}</td>
+            <td><div class ="scroll-wrapper">${escapeHTML(item.comment)}</div></td>
+            <td>${escapeHTML(item.username)}</td>
             <td>
                 <div class="table-buttons-style">
                     <button type="button" class="delete-btn" data-id="${item.id}"> Видалити </button>

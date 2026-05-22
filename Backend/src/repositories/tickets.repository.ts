@@ -29,8 +29,9 @@ export const addTicket = async (ticket: Ticket): Promise<Ticket> => {
   // vrazlivist
   await run (`
   INSERT INTO Tickets (id, theme, status, priority, comment, username, createdAt) 
-  VALUES ('${ticket.id}', '${safeTheme}', '${ticket.status}', '${ticket.priority}', '${safeComment}', '${safeUsername}', '${ticket.createdAt}')
-  `);
+  VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [ticket.id, safeTheme, ticket.status, ticket.priority, safeComment, safeUsername, ticket.createdAt]
+  );
   return ticket;
 };
 
@@ -87,6 +88,6 @@ export const getTopBugs = async (): Promise<Ticket[]> => {
 
 //sql vrazlivist
 export const searchTicketsVulnerable = async (themeQuery: string): Promise<Ticket[]> => {
-  return await all<Ticket>(`SELECT * FROM Tickets WHERE theme LIKE '%${themeQuery}%';`);
+  return await all<Ticket>(`SELECT * FROM Tickets WHERE theme LIKE ?;`, [`%{themeQuery}%`]);
 };
 

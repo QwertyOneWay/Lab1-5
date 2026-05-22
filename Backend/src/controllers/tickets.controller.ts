@@ -44,12 +44,23 @@ export const createTicket = async (
 };
 
 export const updateTicket = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
 ) => {
   try {
     const id = req.params.id as string;
+    const currentUserId = (req as any).currentUserId;
+
+    const ticket = await ticketsService.getTicketById(id);
+    if (!ticket) return res.status(404).json({ error: { message: "Заявку не знайдено" } });
+
+    if (ticket.username !== currentUserId) {
+      return res.status(403).json({
+        error: { code: "FORBIDDEN", message: "Ви не можете редагувати чужі заявки!" }
+      });
+    }
+
     console.log("Метод PUT, ID:", id, "Дані:", req.body);
     const updatedTicket = await ticketsService.updateTicket(id, req.body);
     res.status(200).json(updatedTicket);
@@ -65,6 +76,20 @@ export const deleteTicket =  async (
 ) => {
   try {
     const id = req.params.id as string;
+    const currentUserId = (req as any).currentUserId
+    const ticket = await ticketsService.getTicketById(id);
+    if (!ticket) {
+      return res.status(401).json({
+        error: {message: "Заявку не знайдено "}
+      });
+    }
+
+    if (ticket.username !== currentUserId) {
+      return res.status(403).json({
+        error: {code: "FORBIDDEN", message: "Ви не можете видаляти чужі заявки!"}
+      });
+    }
+
     await ticketsService.deleteTicket(id);
     res.status(204).send();
   } catch (error) {

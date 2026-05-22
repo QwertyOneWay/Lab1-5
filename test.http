@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Отримати список усіх заявок
-GET http://localhost:6060/api/tickets
+GET http://localhost:6060/api/v1/tickets
 
 ### Відфільтрувати заявки Bug
 GET http://localhost:6060/api/tickets?status=Bug
@@ -44,7 +44,7 @@ Content-Type: application/json
 }
 
 ### Видалити заявку
-DELETE http://localhost:6060/api/tickets/id
+DELETE http://localhost:6060/api/v1/tickets/1bdffca3-44f2-49bd-a03e-d78eef2fe405
 
 
 //MESSAGES
@@ -78,3 +78,4 @@ GET http://localhost:6060/api/tickets/advanced/search?q=Проблема
 ### ДЕМОНСТРАЦІЯ SQL-ІН'ЄКЦІЇ
 # Цей запит ігнорує пошук і витягує АБСОЛЮТНО ВСІ заявки з бази
 GET http://localhost:6060/api/tickets/advanced/search?q=' OR 1=1 --
+

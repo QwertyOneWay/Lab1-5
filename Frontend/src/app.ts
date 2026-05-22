@@ -107,7 +107,7 @@ function Validate(dto: TicketDto): boolean {
     const theme = dto.theme.trim();
     if (theme ==="") { showError("theme", "theme-error", "Обов'язкове поле"); isValid = false; }
     else if (theme.length < 4){ showError("theme", "theme-error", "Тема має бути не менше 4 символів"); isValid = false; }
-    else if (theme.length > 50){ showError("theme", "theme-error", "Тема має бути не більше 50 символів"); isValid = false; }
+    else if (theme.length > 90){ showError("theme", "theme-error", "Тема має бути не більше 50 символів"); isValid = false; }
 
     const stat = dto.status.trim();
     if (stat === "") { showError("status", "status-error", "Оберіть статус"); isValid = false; }

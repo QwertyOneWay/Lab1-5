@@ -8,10 +8,16 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    const headers = {
+    const headers: any = {
         'Content-Type': 'application/json',
         ...options.headers,
     };
+
+    const currentUserData = localStorage.getItem('currentUser');
+    if (currentUserData) {
+        const user = JSON.parse(currentUserData);
+        headers['X-Demo-UserId'] = encodeURIComponent(user.userFullName);
+    }
 
     if (options.method === 'POST' || options.method === 'PUT') {
         console.log(` Відправляємо ${options.method} запит на ${url}`);
@@ -20,7 +26,7 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
 
     try{
 
-        const response = await fetch(url, {... options, headers, signal: controller.signal, cache: 'no-store'});
+        const response = await fetch (url, {... options, headers, signal: controller.signal, cache: 'no-store'});
         clearTimeout(timeoutId);
 
         if (response.status === 204) {
